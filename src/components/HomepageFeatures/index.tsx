@@ -11,32 +11,54 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Documentation',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Welcome! We're consolidating the documentation of services provided by
+        eResearch. You'll find information on how to access and use our services, as
+        well as where to go for help when you need it:
+        <ul>
+          <li>M3</li>
+          <li>MonARCH</li>
+          <li>RDS</li>
+          <li>More coming soon</li>
+        </ul>
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'eResearch Training',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        By collaborating with world-leading technology partners and national
+        research infrastructure providers, we equip researchers with new tools and
+        practices, and fast-track industry's ability to bring new technologies to
+        the market.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Capabilities',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        We provide advanced data storage, high-performance computing and
+        expertise for data processing, modelling and simulation, collaboration
+        platforms, and communication capabilities to disseminate research
+        data.
+      </>
+    ),
+  },
+  {
+    title: 'Accelerating Progress',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        Monash eResearch is accelerating progress by applying advanced
+        computing and information technology to important research problems, and by
+        partnering with Australian and global research communities.
       </>
     ),
   },
@@ -44,7 +66,7 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, Svg, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--3')}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
