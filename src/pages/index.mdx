@@ -4,12 +4,27 @@ sidebar_label: Home
 ---
 
 import React from 'react';
+import MonashLogo from '@site/static/img/monash-acp-logo.svg';
 
 <img
   src={require('@site/static/img/monash-acp-banner.png').default}
   alt="Monash ACP Banner"
   style={{ width: '100%', maxHeight: '300px', objectFit: 'cover', marginBottom: '1.5rem' }}
 />
+
+<!-- <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <img
+    src={require('@site/static/img/monash-acp-logo.svg').default}
+    alt="Monash ACP Logo"
+    style={{ maxWidth: '300px',
+      objectFit: 'cover',
+      marginBottom: '1.5rem'}}
+  />
+</div> -->
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <MonashLogo style={{ maxWidth: '300px', marginBottom: '1.5rem' }} />
+</div>
 
 # Welcome to Monash University Malaysia's Advanced Computing Platform (ACP)
 
