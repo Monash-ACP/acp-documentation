@@ -10,7 +10,4 @@ sidebar_position: 13
 | VISHNU | MARCUS | LIM | JUN YI |
 |-----------------------------|-----------------------------|--------------------------|--------------------------|
 | Assoc. Prof. Vishnu Monn Baskaran  | Ts. Dr. Marcus Lim  | HPC Specialist (Operations & Governance) | Jun Yi HPC Specialist (Marketing & Outreach) |
-<<<<<<< HEAD
 | ACP Director | HPC Specialist (Leadership & Innovation) | x | y |
-=======
-| ACP Director | HPC Specialist (Leadership & Innovation) |  |  |
