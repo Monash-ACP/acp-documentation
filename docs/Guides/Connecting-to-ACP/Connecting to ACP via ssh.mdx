@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+
+:::info Just checking
+1. You got your ACP account?
+1. You are in Monash University Malaysia Network?
+    - If you are outside of campus, connect via GlobalProtect on vpn.monash.edu.my
+1. You know your account ID and password?
+:::
+
+
+1. Open a terminal.
+1. Connect to the ACP:
+    ```bash
+    ssh [user]@[ip-addr]
+    ssh u0001@10.168.151.1
+    ```
+1. Key in your ID and password.
+   - When you type in your password, and you didnt see your letters getting typed, do not panic. That is how passwords are not exposed in Linux computers.
+1. If you successfully got in, you will see this in your terminal.
+    <!-- TODO: Add a successful login into Montage -->
+
+:::tip
+Maybe if you are comfortable with working in Linux, this is a tip for you. I **hate** remembering IP addresses, so you can actually register the address and give it a name:
+
+1. From your home, there is probably a hidden folder named `.ssh/`
+1. Create a file `.ssh/config`. Yes, the file doesnt have an extension.
+1. Open with your favourite text editor, edit it:
+    ```bash
+    Host    [give-a-name]
+        HostName    [the-ip-address]
+        User    u0001
+    
+    # Sample
+    Host    montage
+        HostName    10.168.151.1
+    ```
+1. Save and close. Now, you can ssh with the given name:
+    ```bash
+    ssh u0001@montage
+    ```
+:::

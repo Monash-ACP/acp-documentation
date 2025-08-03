@@ -1,0 +1,22 @@
+---
+sidebar_position: 4
+---
+
+There are a few options to do that. First is:
+- FileZilla
+- rsync
+    ```bash
+    # To send files from local (e.g.: laptop) to Montage
+    rsync [source_path] [user]@[ip-addr]:[dest_path]
+    rsync text.txt u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/
+
+    # To copy from Montage back to my laptop
+    rsync [user]@[ip-addr]:[source_path] [dest_path]
+    rsync u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/final_output.txt ./text.txt
+    ```
+    :::tip
+    With rsync, there are some useful options. I usually do: `rsync -r --progress`, `-r` when it is a folder, and I want the transfer to be recursive; `--progress` shows the percentage of transfer per file, gives me an idea of how much longer it will take to complete data transfer.
+    :::
+    :::info
+    Some people uses scp or sftp, that is fine too
+    :::

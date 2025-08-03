@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+---
+
+1. SSH to Montage.
+1. Lets open a screen.
+    ```bash
+    screen -ls       # Just checking if we have existing screens?
+    screen -S jupy   # I am creating a new screen named 'jupy'
+    ```
+    - Great! You are in a screen. That way, your processes can still run in the background, even if you close the terminal window.
+1. Open jupyter lab.
+    ```bash
+    jupyter lab
+    ```
+1. Take note of the port number.
+<!-- TODO: Add picture of jupyter lab session, with port number -->
+1. Exit the screen. Click `Ctrl-A`, then click `D`, to exit the screen.
+1. Your jupyter lab session is now running in background.
+1. Open your favourite internet browser. Go to:
+    ```
+    https://10.168.151.1:[port-number]
+    ```
+1. You are now in!
+
+:::tip
+I like JupyterLab, but if you prefer Jupyter Notebook, you can do that too. Just type `jupyter notebook` instead.
+:::
