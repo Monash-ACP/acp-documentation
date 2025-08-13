@@ -3,10 +3,21 @@ title: How ACP works
 sidebar_position: 3
 ---
 
+<img
+  src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_1.png').default}
+  alt="Monash ACP Banner"
+  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+/>
 Montage is a High-Performance Computing (HPC) cluster. This basically means Montage is made up of thousands of CPUs (along with many GPUs) with very fast networking between them. This setup is ideal for workloads that can be parallelised, that is, jobs that can be split up into smaller chunks which can be run simultaneously. Parallelising such workloads can be dramatically faster than if you had to run that same workload on your personal computer.
 
 Montage is made up of many nodes. There are three main types of node:
 
+<img
+  src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_2.png').default}
+  alt="Monash ACP Banner"
+  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+/>
+<!-- '../../../static/img/Guides/Getting-Started/How-ACP-works_1.png' -->
 | Type of node | How many? | Purpose | 
 | ------------- | -------------- | -------------- |
 | Login | 1-2 | You initially connect to a login node, from where you can submit jobs to run on compute nodes |

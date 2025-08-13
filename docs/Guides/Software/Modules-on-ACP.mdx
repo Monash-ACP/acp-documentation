@@ -1,0 +1,46 @@
+---
+title: Modules on ACP
+sidebar_position: 1
+---
+
+You know, there is a high chance that whatever software you are using, somebody else is using too. Instead of each one of you having individual installations, it saves more space (and my energy), if users can access these softwares as a shared resource.
+
+Introducing module! Just type in:
+
+```bash
+module av
+```
+
+You will be presented with a slew of softwares.
+
+:::info Your software not in the list?
+Just drop us a software install request at [this iLab link](https://mum.ilab.agilent.com/service_item/new/4628?spt_id=14652).
+:::
+
+
+You figured a softwares that you want to use? If it is just a matter of checking out those softwares, (say I am interested in a software named parallel) go ahead in the login node, just type in:
+
+```bash
+module load parallel
+```
+
+:::danger You will not want to `module load` all the softwares in one go
+There are reasons these softwares are not all loaded by default. Just load what you need.
+
+If you go through the `module av` list, you should notice that there are different versions of the same software. You should now notice, that these softwares will not work if they are all loaded. Like, which one you want? Is it `cuda/cudnn/8.4.1` or `cuda/cudnn/8.9.6`.
+:::
+
+Prepare your slurm script for the job submission, then add the module load line:
+
+```bash
+
+module load parallel
+module load cuda/cudnn/8.9.6
+
+```
+
+
+Say throughout your workflow:
+1. There are a bunch of softwares that you will need.
+1. Different softwares at each step.
+1. Say in my workflow, there are three steps,  and each step will require, say five different softwares from the modules list. Instead of putting in 15 lines of `module load`, just load the five you need of each individual steps. That means, three separate slurm scripts for the three separate steps.

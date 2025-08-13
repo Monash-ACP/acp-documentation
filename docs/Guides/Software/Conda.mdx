@@ -1,4 +1,37 @@
 ---
+title: Conda
 sidebar_position: 3
 ---
+
+You dont want to ask us to install the new software you want? That is cool! I was like that too. And conda should be one of your best friend, or maybe docker and singularity images. If you have enough storage space, go ahead. Say I want to install a software called trimmomatic. Get more info about the conda channels that contain this software. By googling, I know it is in `bioconda`. So, from the login node, just straight:
+
+
+```bash
+# Im creating a new conda environment, named it trimmo.
+# Softwares usually contain dependencies, and usually conda-forge channel have them. Just a habit of mine.
+conda create -n trimmo -c bioconda -c conda-forge trimmomatic
+```
+
+A bit of test-driving here:
+```bash
+# Activate the environment to acces the software
+conda activate trimmo
+
+# Test it out, can you find trimmomatic?
+$ trimmomatic 
+Usage: 
+       PE [-version] [-threads <threads>] [-phred33|-phred64] [-trimlog <trimLogFile>] [-summary <statsSummaryFile>] [-quiet] [-validatePairs] [-basein <inputBase> | <inputFile1> <inputFile2>] [-baseout <outputBase> | <outputFile1P> <outputFile1U> <outputFile2P> <outputFile2U>] <trimmer1>...
+   or: 
+       SE [-version] [-threads <threads>] [-phred33|-phred64] [-trimlog <trimLogFile>] [-summary <statsSummaryFile>] [-quiet] <inputFile> <outputFile> <trimmer1>...
+   or: 
+       -version
+
+# Deactivate the environment once you done with it
+# You will notice the conda env name is not in your prompt
+conda deactivate
+
+# Can you access trimmomatic without activating the trimmo env?
+-bash: trimmomatic: command not found
+
+```
 
