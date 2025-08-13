@@ -1,0 +1,19 @@
+---
+sidebar_position: 7
+title: "Run out of storage quota?"
+---
+
+
+Yeah, we know, some projects will require a bit more storage space but here are some things to make sure you have enough space:
+
+- You use python in your work? Have you `pip clear`? `conda clear --all`?
+- Take advantage of the [shared resources](./Key-directories-on-ACP.mdx)?
+- You know, maybe you can remove intermediate files that maybe you dont need?
+    1. But make sure to keep log files as needed. These logs usually dont take much space, and you can diagnose the workflow you just executed.
+    1. These logs will be important. Without being able to know what happened during the job execution, you might end up having to rerun the workflow, unnecessarily.
+
+
+:::caution But Marcus, I really need that extra space
+
+That is okay. Drop an issue on [iLab](https://mum.ilab.agilent.com/service_item/new/4628?spt_id=14652). We will evaluate your situation, we might ask questions. If everything is okay, we will grant that extra storage space you requested.
+:::

@@ -1,0 +1,24 @@
+---
+title: Key directories on ACP
+sidebar_position: 1
+---
+
+When you are in the Montage, you will be in your home directory, usually it looks like `/home/[user]`.
+
+Your work will mostly revolve anything within your home directory, the most would be the /ibm/gpfs/[your-school]. Hopefully you are not going to work with anything outside these folders; these would be within the admin jurisdiction.
+
+So, three key file systems:
+
+| Directory | Name | Backed up? | What files to place here? |
+| ------------- | -------------- | -------------- | -------------- |
+| `~` or `/home/[username]` | Your home directory! | Yes? | All your project files |
+
+If you worked on the Massive M3 HPC, the project structure is very different. You just need to think of your own directory. No scratch directories, no project directories. Simple.
+
+ <blockquote>But Marcus, I need more storage space...</blockquote> 
+
+ Now, say if the resource that you are using can be shared, maybe your labmates are using the same resources, so it would be ideal if those files can be shared. If your workflow requires a 50 Gb database, we dont need every single user to be downloading 50 Gb per user, that takes too much space. So, we have another directory that is meant for shared resources.
+
+<!-- TODO: Check the directory paths -->
+<!-- TODO: Assign research team per school to manage the shared directories -->
+These directories, we expect research teams from individual schools to manage them. For example, for School of Science, the shared directory would be `/ibm/gpfs/sos`.

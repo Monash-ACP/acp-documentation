@@ -3,3 +3,30 @@ title: How ACP works
 sidebar_position: 3
 ---
 
+Montage is a High-Performance Computing (HPC) cluster. This basically means Montage is made up of thousands of CPUs (along with many GPUs) with very fast networking between them. This setup is ideal for workloads that can be parallelised, that is, jobs that can be split up into smaller chunks which can be run simultaneously. Parallelising such workloads can be dramatically faster than if you had to run that same workload on your personal computer.
+
+Montage is made up of many nodes. There are three main types of node:
+
+| Type of node | How many? | Purpose | 
+| ------------- | -------------- | -------------- |
+| Login | 1-2 | You initially connect to a login node, from where you can submit jobs to run on compute nodes |
+| Compute | Many, these make up most of Montage | Run all of your computations on these |
+<!-- | Data-transfer (DTN) | 1-2 | Use these for large file transfers to and from Montage. | -->
+
+:::warning
+The login nodes are lightweight and are shared by many users at once. You must not run heavy workloads on the login nodes, since this degrades the node's performance for every user and can even render it inaccessible. We will kill any heavyweight processes that we find on the login node and notify you when this happens.
+
+**If you repeat this after having already been warned, your access to Montage may be revoked.**
+:::
+
+Every Montage user can freely connect to the login nodes, but you cannot simply connect to a compute node to start running your workload. Instead, we rely on a job scheduler called Slurm. Slurm is responsible for managing all of the resources on Montage (e.g. CPUs, GPUs, memory, nodes, etc.) and sharing those resources fairly between all users on Montage. The basic idea is:
+
+1. You connect to a login node.
+1. Submit a job allocation request to slurm. This include specifics:
+    - How many CPUs?
+    - How much memory (RAM)?
+    - How long will this job need these resources?
+1. Slurm places your job in its queue. It will quickly identify a good time to start running your job and which exact resources to allocate for your job.
+1. Your job will eventually run on the allocated resources, i.e. on compute nodes.
+
+There is still a lot for you to learn about how to run jobs on Montage! Dive into Running jobs on Montage to learn more.
