@@ -2,3 +2,37 @@
 title: Editing files
 sidebar_position: 6
 ---
+
+## Through a text editor like VSCode or Sublime Text
+
+Well, maybe you are thinking, write a script on your laptop, upload it to the ACP, and run it. **BAD IDEA**.
+
+What you probably want to do is, make an SFTP connection from your text editor to the ACP. Look into these links:
+- [VSCode](https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp)
+- [Sublime Text](https://medium.com/@daniwhkim/remote-ftp-sftp-with-sublime-de7d71a2b400)
+
+## Through the terminal while connected on the ACP
+
+If you have to edit while being in the terminal, connected to the ACP, an easy way would be to use `nano`                   . Just get the path of the file you want to edit, and then:
+
+```bash
+nano /path/to/script_to_edit.sh
+```
+
+But to the power users out there, NeoVim is the way to go, if you want to:
+- Move **FAST** through your files and folders.
+- Modal editing.
+- *quickfixlist*, *buffers*
+- LSP integration
+- Fuzzy finding your:
+    - Files
+    - Diagnostics 
+- Terminal integration
+- Take advantage of vim plugins
+- Have fun using a text editor
+
+All these goodies, while being in the terminal? And without your hand ever leaving the keyboard, so you can throw away the mouse too! This all sound geeky, but on God, NeoVim is fire for real for real.
+
+If some of these terms seem unfamiliar to you, you are missing out. Check out this video for a preview of why vim/NeoVim:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E-ZbrtoSuzw?si=rtIz9BBl9YQwzANp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

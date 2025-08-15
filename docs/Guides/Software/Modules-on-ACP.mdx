@@ -39,8 +39,49 @@ module load cuda/cudnn/8.9.6
 
 ```
 
+If you don't need a software that you don't need anymore:
 
+```bash
+module unload parallel
+
+```
+
+:::tip
 Say throughout your workflow:
 1. There are a bunch of softwares that you will need.
 1. Different softwares at each step.
-1. Say in my workflow, there are three steps,  and each step will require, say five different softwares from the modules list. Instead of putting in 15 lines of `module load`, just load the five you need of each individual steps. That means, three separate slurm scripts for the three separate steps.
+1. Say in my workflow:
+    - There are three steps
+    - Each step will require, say three different softwares from the modules list.
+    - Instead of putting in 9 lines of `module load`, just load the three softwares relevant to each individual steps. That means, three separate slurm scripts for the three separate steps.
+
+    ```bash title='step1_genomeAssembly.slurm' showLineNumbers
+    module load abyss/2.3.5
+    module load canu/2.2
+    module load metawrap/1.3.2
+
+    # ...
+    # the rest of the code for step1
+    # ...
+    ```
+
+    ```bash title='step2_readAlignment.slurm' showLineNumbers
+    module load bowtie2
+    module load bbmap/39.01
+    module load stringtie/2.2.1
+
+    # ...
+    # the rest of the code for step1
+    # ...
+    ```
+
+    ```bash title='step3_functionalAnnotation.slurm' showLineNumbers
+    module load hmmer/3.3.2
+    module load roary/3.13.0
+    module load repeatmasker/4.1.3
+
+    # ...
+    # the rest of the code for step1
+    # ...
+    ```
+:::

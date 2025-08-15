@@ -3,3 +3,16 @@ title: GPUs on ACP
 sidebar_position: 5
 ---
 
+Okay, accessing GPUs may be slightly tricky. Of course, the partition you need to access would be the `gpu` partition. If you have a slurm script file, just add this SLURM config line at the top of your script.
+
+
+```bash
+#!/usr/bin/env bash
+
+#SBATCH --parition=gpu
+
+[... the rest of your code ...]
+
+```
+
+
