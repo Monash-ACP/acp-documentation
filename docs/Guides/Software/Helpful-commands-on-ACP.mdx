@@ -1,0 +1,36 @@
+---
+title: Helpful commands on ACP
+sidebar_position: 2
+---
+
+## Basics
+What are all the partitions we have?
+
+```bash
+sinfo
+```
+
+That is too long. How about a summary?
+
+```bash
+sinfo -s
+```
+
+What about nodes? Give me the node details.
+
+```bash
+sinfo -N
+```
+
+Check out `man sinfo` for more details.
+
+
+## I just need a quick interactive session to check out my workflow
+
+Okay, not how you supposed to use the ACP, but here you go; one quick interactive session into the `gpu` partition, one node, one task, reserving 8 Gb of RAM.
+
+```bash
+salloc --partition=gpu --nodes=1 --ntasks=1 --mem=8G
+```
+
+You probably will have to wait a bit to reserve that resource, wait until the queue can allocate the resource you requested.

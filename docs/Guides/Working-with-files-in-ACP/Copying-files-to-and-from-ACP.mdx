@@ -1,0 +1,35 @@
+---
+title: Copying files to and from ACP
+sidebar_position: 4
+---
+
+There are a few options to do that. First is:
+
+- A GUI interface like FileZilla
+
+This is a simple user-friendly way to transfer files. What you need will be your username, password, and the IP address of the ACP.
+
+:::danger
+Always remember the IP address!! It is `10.168.151.1`.
+:::
+
+:::tip
+I remembered using WinSCP too, I had to work on a Windows laptop. It worked just like FileZilla.
+:::
+
+- Through a CLI tool like `rsync` or `scp` 
+    ```bash
+    # To send files from local (e.g.: laptop) to Montage
+    rsync [source_path] [user]@[ip-addr]:[dest_path]
+    rsync text.txt u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/
+
+    # To copy from Montage back to my laptop
+    rsync [user]@[ip-addr]:[source_path] [dest_path]
+    rsync u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/final_output.txt ./text.txt
+    ```
+    :::tip
+    With rsync, there are some useful options. I usually do: `rsync -r --progress`, `-r` when it is a folder, and I want the transfer to be recursive; `--progress` shows the percentage of transfer per file, gives me an idea of how much longer it will take to complete data transfer.
+    :::
+    :::info
+    Some people uses scp or sftp, that is fine too
+    :::
