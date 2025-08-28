@@ -4,10 +4,69 @@
         <title>Monash Advanced Computing Platform Blog</title>
         <link>https://github.com/acp-documentation/blog</link>
         <description>Monash Advanced Computing Platform Blog</description>
-        <lastBuildDate>Thu, 26 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Jul 2025 16:53:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[First Title to launch:]]></title>
+            <link>https://github.com/acp-documentation/blog/blog_plan</link>
+            <guid>https://github.com/acp-documentation/blog/blog_plan</guid>
+            <pubDate>Tue, 22 Jul 2025 16:53:00 GMT</pubDate>
+            <description><![CDATA[- “What Even Is This Thing?”: Your First Day on an HPC]]></description>
+            <content:encoded><![CDATA[<ul>
+<li>“What Even Is This Thing?”: Your First Day on an HPC</li>
+<li>Slurm and Chill: Submitting Your First Job in 5 Minutes</li>
+<li>The HPC Isn’t Scary (But You Might Be Doing It Wrong)</li>
+<li>STOP Running on the Login Node! (and Other First-Time Sins)</li>
+<li>From Copy-Paste to Power User: Your Next 6 Months on the Cluster</li>
+<li>Be smarter with your HPC, dont be a smartass</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-blogs-to-write">Future blogs to write<a href="https://github.com/acp-documentation/blog/blog_plan#future-blogs-to-write" class="hash-link" aria-label="Direct link to Future blogs to write" title="Direct link to Future blogs to write">​</a></h2>
+<p>🌱 Foundation (For New &amp; Clueless Users)</p>
+<ul>
+<li>Welcome to the Cluster: What is an HPC and why should you care?</li>
+<li>SSH, Shells &amp; Survival: Your first hour on the command line</li>
+<li>Where Am I and What Can I Do?: Understanding the filesystem &amp; modules</li>
+<li>Slurm for Humans: Submitting your first job without losing your mind</li>
+<li>Interactive Jobs vs Batch Jobs: When to use what</li>
+<li>The HPC Etiquette Manual: Being a good citizen on shared infrastructure</li>
+</ul>
+<p>🛠️ Getting Practical</p>
+<ul>
+<li>I/O and You: Avoiding common data bottlenecks</li>
+<li>Modules, Envs, and Conda Hell: How to manage environments painlessly</li>
+<li>Containers on the Cluster: Using Singularity like a pro</li>
+<li>When Your Job Fails: Reading error logs and debugging effectively</li>
+<li>How to Not Get Kicked Off the Login Node: Best practices for heavy tasks</li>
+</ul>
+<p>🚀 Power User Tips</p>
+<ul>
+<li>Profiling and Performance: Knowing where your code burns time</li>
+<li>Parallel or Bust: When (and how) to go beyond a single core</li>
+<li>Array Jobs for Mass Execution: The cleanest way to run hundreds of jobs</li>
+<li>Storage Hacks: Organizing your project for speed and sanity</li>
+<li>Advanced SLURM Recipes: Constraints, dependencies, and node reservations</li>
+</ul>
+<p>📚 Meta &amp; Mythbusting</p>
+<ul>
+<li>What the HPC Isn't: Common misconceptions debunked<!-- -->
+<ul>
+<li>Some people think the HPC can run things faster</li>
+</ul>
+</li>
+<li>You Don’t Need to Be a Guru: Learning HPC the lazy way</li>
+<li>Research vs Resources: HPC isn’t magic, it needs efficient code</li>
+<li>Support Tickets that Get Solved Fast: How to write a good one</li>
+</ul>
+<p>🧠 Community &amp; Beyond</p>
+<ul>
+<li>We Asked Our Power Users…: Tips from real users</li>
+<li>Workshops, Resources, and YouTube Channels: Learn faster</li>
+<li>HPC in the Wild: Case studies of real research powered by your cluster</li>
+<li>What's New on the Cluster: Updates, maintenance plans, and upgrades</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Welcome]]></title>
             <link>https://github.com/acp-documentation/blog/welcome</link>

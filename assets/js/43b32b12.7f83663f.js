@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkacp_documentation=self.webpackChunkacp_documentation||[]).push([[8920],{497:t=>{t.exports=JSON.parse('{"metadata":{"permalink":"/acp-documentation/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":5,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
