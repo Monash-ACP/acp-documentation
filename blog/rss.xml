@@ -4,7 +4,7 @@
         <title>Monash Advanced Computing Platform Blog</title>
         <link>https://github.com/acp-documentation/blog</link>
         <description>Monash Advanced Computing Platform Blog</description>
-        <lastBuildDate>Tue, 22 Jul 2025 16:53:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 29 Aug 2025 15:41:27 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[First Title to launch:]]></title>
             <link>https://github.com/acp-documentation/blog/blog_plan</link>
             <guid>https://github.com/acp-documentation/blog/blog_plan</guid>
-            <pubDate>Tue, 22 Jul 2025 16:53:00 GMT</pubDate>
+            <pubDate>Fri, 29 Aug 2025 15:41:27 GMT</pubDate>
             <description><![CDATA[- “What Even Is This Thing?”: Your First Day on an HPC]]></description>
             <content:encoded><![CDATA[<ul>
 <li>“What Even Is This Thing?”: Your First Day on an HPC</li>
