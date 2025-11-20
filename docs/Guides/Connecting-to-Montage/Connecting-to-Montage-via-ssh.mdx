@@ -1,5 +1,5 @@
 ---
-title: Connecting to ACP via ssh
+title: Connecting to Montage via ssh
 sidebar_position: 1
 ---
 
@@ -12,10 +12,10 @@ sidebar_position: 1
 
 
 1. Open a terminal.
-1. Connect to the ACP:
+1. Connect to Montage:
     ```bash
     ssh [user]@[ip-addr]
-    ssh u0001@10.168.151.1
+    ssh user0001@10.168.151.1    # switch user0001 to your username
     ```
 1. Key in your ID and password.
    - When you type in your password, and you didnt see your letters getting typed, do not panic. That is how passwords are not exposed in Linux computers.
@@ -31,14 +31,15 @@ Maybe if you are comfortable with working in Linux, this is a tip for you. I **h
     ```bash
     Host    [give-a-name]
         HostName    [the-ip-address]
-        User    u0001
+        User    user0001
     
     # Sample
     Host    montage
         HostName    10.168.151.1
     ```
 1. Save and close. Now, you can ssh with the given name:
+
     ```bash
-    ssh u0001@montage
+    ssh user0001@montage
     ```
 :::

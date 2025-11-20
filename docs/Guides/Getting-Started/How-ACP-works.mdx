@@ -11,7 +11,7 @@ Advanced Computing Platform (ACP) is the team.
 Montage is the server, or the high performance computing (HPC) cluster, or the computer.
 </blockquote>
 
-Montage is a HPC cluster, made up of thousands of CPUs (and GPUs) with very fast networking between them. This setup is ideal for workloads that can be parallelised, that is, jobs that can be split up into smaller chunks which can be run simultaneously. Parallelising such workloads can be dramatically faster than if you had to run that same workload on your personal computer.
+Montage (**MON**ash Malaysia fu**T**uristic **A**rchitechture for next **G**eneration r**E**search) is a HPC cluster, made up of thousands of CPUs (and GPUs) with very fast networking between them. This setup is ideal for workloads that can be parallelised, that is, jobs that can be split up into smaller chunks which can be run simultaneously. Parallelising such workloads can be dramatically faster than if you had to run that same workload on your personal computer.
 
 <img
 src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_1.png').default}
@@ -21,7 +21,7 @@ style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
 
 In modern HPC clusters, tasks are efficiently executed across multiple interconnected nodes, allowing for parallel processing similar to cars traveling to different destinations concurrently. This scalability is advantageous, particularly when managing numerous small simulations simultaneously. Conversely, traditional mainframe HPC relies on a single powerful node, akin to a truck, which poses challenges for scaling out. In such systems, simulations may need to be processed sequentially, resembling the delivery of goods to destinations one after the other.
 
-Montage is made up of many nodes. There are three main types of node:
+Montage is made up of many nodes. There are two main types of nodes:
 
 <img
   src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_2.png').default}
@@ -31,7 +31,7 @@ Montage is made up of many nodes. There are three main types of node:
 <!-- '../../../static/img/Guides/Getting-Started/How-ACP-works_1.png' -->
 | Type of node | How many? | Purpose | 
 | ------------- | -------------- | -------------- |
-| Login | 1-2 | You initially connect to a login node, from where you can submit jobs to run on compute nodes |
+| Login | 1-2 | Usually, one connects to Montage via ssh here, **the login node**, from where you can submit jobs to run on compute nodes |
 | Compute | Many, these make up most of Montage | Run all of your computations on these nodes by submitting jobs from the login node |
 <!-- | Data-transfer (DTN) | 1-2 | Use these for large file transfers to and from Montage. | -->
 

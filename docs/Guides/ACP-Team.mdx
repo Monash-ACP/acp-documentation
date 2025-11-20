@@ -2,12 +2,32 @@
 sidebar_position: 13
 ---
 
+import TeamMember from '@site/src/components/TeamMember';
+
 # ACP Team
 
-<!-- FIXME: Remove Dr Vishnu? -->
 
 <!-- | ![](./images/acp-vishnu.jpg) | ![](./images/acp-marcus.jpg) | ![](./images/acp-lim.jpg) | ![](./images/acp-junyi.jpg) | -->
-| VISHNU | MARCUS | LIM | JUN YI |
-|-----------------------------|-----------------------------|--------------------------|--------------------------|
-| Assoc. Prof. Vishnu Monn Baskaran  | Ts. Dr. Marcus Lim  | HPC Specialist (Operations & Governance) | Jun Yi HPC Specialist (Marketing & Outreach) |
-| ACP Director | HPC Specialist (Leadership & Innovation) | x | y |
+<!-- | VISHNU | MARCUS | LIM | JUN YI | -->
+<!-- |-----------------------------|-----------------------------|--------------------------|--------------------------| -->
+<!-- | Assoc. Prof. Vishnu Monn Baskaran  | Ts. Dr. Marcus Lim  | HPC Specialist (Operations & Governance) | Jun Yi HPC Specialist (Marketing & Outreach) | -->
+<!-- | ACP Director | HPC Specialist (Leadership & Innovation) | x | y | -->
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', justifyContent: 'center' }}>
+
+    <TeamMember
+        name='Dr Mohd Fikree Hassan'
+        title='ACP Director'
+        description='Dr Fikree oversees the project roadmap and technical direction.'
+        image='/img/ACP-Team/Fikree.png'
+        socialLink='https://research.monash.edu/en/persons/mohd-fikree-hassan'
+    />
+    <TeamMember
+        name='Ts Dr Marcus Lim Jun Yi'
+        title='HPC Specialist'
+        description='Dr Marcus is the guy slaving behind his laptop, coding away to maintain Montage. He loves coffee and clean code.'
+        image='/img/ACP-Team/Marcus.png'
+        socialLink='mailto:lim.junyi@monash.edu'
+    />
+
+</div>
