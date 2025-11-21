@@ -7,10 +7,88 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Check the resources that we have here; below are the detailed specifications for all available compute nodes. This reference is crucial for specifying hardware requirements (CPUs, RAM, and GPUs/MIGs) when using the `sbatch` command to ensure optimal job scheduling and performance.
 
-<img
-  src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/Specifying-resources-in-Slurm_1.png')}
-  alt="Resources table"
-  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
-/>
+
+<table>
+    <thead>
+        <tr style={{ backgroundColor: '#fdbd88'}}>
+            <th>Node</th>
+            <th>Type</th>
+            <th>CPU</th>
+            <th>System RAM</th>
+            <th>GPU</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>mum-hpc2-comp1</td>
+            <td style={{ background: '#b3def0'}} rowspan="4">CPU</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>256 Gb</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-comp2</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>256 Gb</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-comp3</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>256 Gb</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-comp4</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>256 Gb</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-gpu1</td>
+            <td style={{ background: '#aff8a2'}} rowspan="6">GPU</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>512 Gb</td>
+            <td>4x 3g.39gb, 2x 7g.79gb</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-gpu2</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>512 Gb</td>
+            <td>4x 3g.39gb, 2x 7g.79gb</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-gpu3</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>512 Gb</td>
+            <td>4x 3g.39gb, 2x 7g.79gb</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-gpu4</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>512 Gb</td>
+            <td>4x 3g.39gb, 2x 7g.79gb</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-gpu5</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>512 Gb</td>
+            <td>4x A100 Gb</td>
+        </tr>
+        <tr>
+            <td>mum-hpc2-gpu6</td>
+            <td>2x 32 cores, 64 threads</td>
+            <td>512 Gb</td>
+            <td>4x A100 Gb</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- <img -->
+<!--   src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/Specifying-resources-in-Slurm_1.png')} -->
+<!--   alt="Resources table" -->
+<!--   style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }} -->
+<!-- /> -->
 
 For GPU users, check out [GPUs on Montage](GPUs-on-Montage.mdx)

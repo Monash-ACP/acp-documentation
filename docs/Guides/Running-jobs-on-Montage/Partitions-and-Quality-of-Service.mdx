@@ -7,10 +7,148 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 Here are some partition information:
-<!-- '../../../static/img/Guides/Running-jobs-on-Montage/Partitions-and-Quality-of-Service_1.png' -->
 
-<img
-  src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/Partitions-and-Quality-of-Service_1.png')}
-  alt="Resources table"
-  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
-/>
+<table>
+    <thead>
+        <tr style={{ backgroundColor: '#fdbd88'}}>
+        <th>Partition Name</th>
+        <th>MaxWall Time</th>
+        <th>Total CPU</th>
+        <th>Max CPU per User</th>
+        <th>Max GPU per User</th>
+        <th>Max RAM per User</th>
+        <th>GPU Profile</th>
+        <th>Uses</th>
+        <th>Priority Tier</th>
+        <th>Nodes</th>
+        </tr>
+    </thead>
+    <tbody style={{ textAlign: 'center'}}>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu1</td>
+        <td>14 days</td>
+        <td>512</td>
+        <td>64</td>
+        <td>N/A</td>
+        <td>32 Gb</td>
+        <td>N/A</td>
+        <td>All (Default)</td>
+        <td>1</td>
+        <td>All CPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu1.medm</td>
+        <td>14 days</td>
+        <td>512</td>
+        <td>64</td>
+        <td>N/A</td>
+        <td>64 Gb</td>
+        <td>N/A</td>
+        <td>All</td>
+        <td>1</td>
+        <td>All CPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu1.largem</td>
+        <td>14 days</td>
+        <td>512</td>
+        <td>64</td>
+        <td>N/A</td>
+        <td>128 Gb</td>
+        <td>N/A</td>
+        <td>All</td>
+        <td>1</td>
+        <td>All CPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu1.largec</td>
+        <td>14 days</td>
+        <td>512</td>
+        <td>128</td>
+        <td>N/A</td>
+        <td>128 Gb</td>
+        <td>N/A</td>
+        <td>Need permission</td>
+        <td>1</td>
+        <td>All CPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu1.largec.28d</td>
+        <td>28 days</td>
+        <td>512</td>
+        <td>128</td>
+        <td>N/A</td>
+        <td>128 Gb</td>
+        <td>N/A</td>
+        <td>Need permission</td>
+        <td>1</td>
+        <td>All CPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu2</td>
+        <td>14 days</td>
+        <td>480</td>
+        <td>32</td>
+        <td>N/A</td>
+        <td>32 Gb</td>
+        <td>N/A</td>
+        <td>All</td>
+        <td>1</td>
+        <td>All GPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu2.medm</td>
+        <td>14 days</td>
+        <td>480</td>
+        <td>64</td>
+        <td>N/A</td>
+        <td>64 Gb</td>
+        <td>N/A</td>
+        <td>All</td>
+        <td>1</td>
+        <td>All GPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#b3def0'}}>cpu2.largec</td>
+        <td>14 days</td>
+        <td>480</td>
+        <td>64</td>
+        <td>N/A</td>
+        <td>128 Gb</td>
+        <td>N/A</td>
+        <td>All</td>
+        <td>1</td>
+        <td>All GPU</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#aff8a2'}}>gpu</td>
+        <td>14 days</td>
+        <td>768</td>
+        <td>16</td>
+        <td>2</td>
+        <td>64 Gb</td>
+        <td>3g.39gb,7g.79gb</td>
+        <td>All & Jupyter</td>
+        <td>50</td>
+        <td>GPU [1-4]</td>
+        </tr>
+        <tr>
+        <td style={{ backgroundColor: '#aff8a2'}}>highprio</td>
+        <td>28 days</td>
+        <td>1280</td>
+        <td>No Limit</td>
+        <td>No Limit</td>
+        <td>No Limit</td>
+        <td>3g.39gb,7g.79gb</td>
+        <td>Need permission</td>
+        <td>100</td>
+        <td>All</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <img -->
+<!--   src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/Partitions-and-Quality-of-Service_1.png')} -->
+<!--   alt="Resources table" -->
+<!--   style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }} -->
+<!-- /> -->

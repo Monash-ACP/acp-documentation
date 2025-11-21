@@ -7,11 +7,92 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 GPUs are split into Multi-Instance GPUs (MIGs) to enable more users to access GPU resources; of course, the performance is also split too. However, the A100 GPUs in nodes mum-hpc2-gpu[5-6] do not have MIG enabled, reserved for users with urgent needs. These are only accessible under the Slurm `highprio` partition.
 
-<img
-  src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/GPUs-on-Montage_1.png')}
-  alt="GPU resources table"
-  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
-/>
+<table>
+    <thead>
+        <tr style={{ backgroundColor: '#fdbd88'}}>
+            <th>GPU Server</th>
+            <th>GPU</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>VRAM</th>
+        </tr>
+    </thead>
+    <tbody style={{ textAlign: 'center'}}>
+        <tr>
+            <td rowspan="4" style={{ backgroundColor: '#aff8a2'}}>mum-hpc2-gpu[1-4]</td>
+            <td>1</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>7g.79gb</td>
+            <td>7g.79gb</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>7g.79gb</td>
+            <td>7g.79gb</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>7g.79gb</td>
+            <td>7g.79gb</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>3g.39gb</td>
+            <td>7g.79gb</td>
+            <td>7g.79gb</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td rowspan="4" style={{ backgroundColor: '#aff8a2'}}>mum-hpc2-gpu[5-6]</td>
+            <td>1</td>
+            <td colspan="6">A100 (No MIG)</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td colspan="6">A100 (No MIG)</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td colspan="6">A100 (No MIG)</td>
+            <td>80 Gb</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td colspan="6">A100 (No MIG)</td>
+            <td>80 Gb</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- <img -->
+<!--   src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/GPUs-on-Montage_1.png')} -->
+<!--   alt="GPU resources table" -->
+<!--   style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }} -->
+<!-- /> -->
 
 Accessing GPUs may be slightly tricky. Of course, the partition you need to access would be the `gpu` partition. If you have a slurm script file, just add this SLURM config line at the top of your script.
 
