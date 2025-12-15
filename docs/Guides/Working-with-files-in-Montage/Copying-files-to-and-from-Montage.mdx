@@ -1,5 +1,5 @@
 ---
-title: Copying files to and from Montage
+title: Copying files to and from MONTAGE
 sidebar_position: 4
 ---
 
@@ -19,11 +19,11 @@ I remembered using WinSCP too, I had to work on a Windows laptop. It worked just
 
 - Through a CLI tool like `rsync` or `scp` 
     ```bash
-    # To send files from local (e.g.: laptop) to Montage
+    # To send files from local (e.g.: laptop) to MONTAGE
     rsync [source_path] [user]@[ip-addr]:[dest_path]
     rsync text.txt u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/
 
-    # To copy from Montage back to my laptop
+    # To copy from MONTAGE back to my laptop
     rsync [user]@[ip-addr]:[source_path] [dest_path]
     rsync u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/final_output.txt ./text.txt
     ```

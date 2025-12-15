@@ -1,18 +1,28 @@
 ---
-title: Connecting to Montage via ssh
+title: Connecting to MONTAGE via ssh
 sidebar_position: 1
 ---
 
 :::info Just checking
-1. You got your ACP account?
+1. You got your ACP account? Register via [iLab](https://mum.ilab.agilent.com/service_item/new/4628?spt_id=14652). Of course, you will need your Monash iLab credentials to do that, should be quick enough to register.
 1. You are in Monash University Malaysia Network?
     - If you are outside of campus, connect via GlobalProtect on vpn.monash.edu.my
 1. You know your account ID and password?
+1. Read on SSH
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v45p_kJV9i4?si=bb0jQ4ILQHCDH4Cl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 :::
 
+## If you are on a Windows machine...
+1. From Windows machines, there are various SSH-compatible programs:
+    - [ PowerShell or Command Prompt (Windows built-in) ](<iframe width="560" height="315" src="https://www.youtube.com/embed/pWDHUlvcAsg?si=1Z2Q97DaaLlQCbiE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>)
+    - PuTTY (Open Source)
+    - MobaXterm
+    - mRemoteNG
+1. Fill in your HPC credentials, especially the username and password.
 
-1. Open a terminal.
-1. Connect to Montage:
+## If you are on a Mac or Linux machine...
+1. If you are on a Mac or Linux machine, just open a terminal.
+1. Connect to MONTAGE:
     ```bash
     ssh [user]@[ip-addr]
     ssh user0001@10.168.151.1    # switch user0001 to your username
@@ -20,7 +30,12 @@ sidebar_position: 1
 1. Key in your ID and password.
    - When you type in your password, and you didnt see your letters getting typed, do not panic. That is how passwords are not exposed in Linux computers.
 1. If you successfully got in, you will see this in your terminal.
-    <!-- TODO: Add a successful login into Montage -->
+    <!-- TODO: Add a successful login into MONTAGE -->
+    <img
+      src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-SSH_1.png').default}
+      alt="Monash ACP Banner"
+      style={{ width: '80%', objectFit: 'cover', marginBottom: '1.5rem' }}
+    />
 
 :::tip
 Maybe if you are comfortable with working in Linux, this is a tip for you. I **hate** remembering IP addresses, so you can actually register the address and give it a name:
