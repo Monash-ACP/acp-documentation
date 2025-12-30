@@ -177,8 +177,12 @@ const config: Config = {
         {
           title: 'Documentation',
           items: [
+	    {
+	      label: 'Guides',
+	      to: '/Guides/Overview'
+	    },
             {
-              label: 'Research Data Storage (Coming soon!)',
+              label: 'RDS (Coming soon!)',
               to: '/RDS',
             },
           ],
