@@ -5,150 +5,40 @@ sidebar_position: 4
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<style>{`
+  .qos-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .qos-table th {
+    background-color: #fdbd88 !important;
+    color: black !important;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  .qos-table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* This gives your other cells room to breathe */
+    text-align: center;
+    vertical-align: middle;
+  }
+`}</style>
 
 Here are some partition information:
 
-<table>
-    <thead>
-        <tr style={{ color: 'black', backgroundColor: '#fdbd88'}}>
-        <th>Partition Name</th>
-        <th>MaxWall Time</th>
-        <th>Total CPU</th>
-        <th>Max CPU per User</th>
-        <th>Max GPU per User</th>
-        <th>Max RAM per User</th>
-        <th>GPU Profile</th>
-        <th>Uses</th>
-        <th>Priority Tier</th>
-        <th>Nodes</th>
-        </tr>
-    </thead>
-    <tbody style={{ textAlign: 'center'}}>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu1</td>
-        <td>14 days</td>
-        <td>512</td>
-        <td>64</td>
-        <td>N/A</td>
-        <td>32 Gb</td>
-        <td>N/A</td>
-        <td>All (Default)</td>
-        <td>1</td>
-        <td>All CPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu1.medm</td>
-        <td>14 days</td>
-        <td>512</td>
-        <td>64</td>
-        <td>N/A</td>
-        <td>64 Gb</td>
-        <td>N/A</td>
-        <td>All</td>
-        <td>1</td>
-        <td>All CPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu1.largem</td>
-        <td>14 days</td>
-        <td>512</td>
-        <td>64</td>
-        <td>N/A</td>
-        <td>128 Gb</td>
-        <td>N/A</td>
-        <td>All</td>
-        <td>1</td>
-        <td>All CPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu1.largec</td>
-        <td>14 days</td>
-        <td>512</td>
-        <td>128</td>
-        <td>N/A</td>
-        <td>128 Gb</td>
-        <td>N/A</td>
-        <td>Need permission</td>
-        <td>1</td>
-        <td>All CPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu1.largec.28d</td>
-        <td>28 days</td>
-        <td>512</td>
-        <td>128</td>
-        <td>N/A</td>
-        <td>128 Gb</td>
-        <td>N/A</td>
-        <td>Need permission</td>
-        <td>1</td>
-        <td>All CPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu2</td>
-        <td>14 days</td>
-        <td>480</td>
-        <td>32</td>
-        <td>N/A</td>
-        <td>32 Gb</td>
-        <td>N/A</td>
-        <td>All</td>
-        <td>1</td>
-        <td>All GPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu2.medm</td>
-        <td>14 days</td>
-        <td>480</td>
-        <td>64</td>
-        <td>N/A</td>
-        <td>64 Gb</td>
-        <td>N/A</td>
-        <td>All</td>
-        <td>1</td>
-        <td>All GPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#b3def0'}}>cpu2.largec</td>
-        <td>14 days</td>
-        <td>480</td>
-        <td>64</td>
-        <td>N/A</td>
-        <td>128 Gb</td>
-        <td>N/A</td>
-        <td>All</td>
-        <td>1</td>
-        <td>All GPU</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#aff8a2'}}>gpu</td>
-        <td>14 days</td>
-        <td>768</td>
-        <td>16</td>
-        <td>2</td>
-        <td>64 Gb</td>
-        <td>3g.39gb,7g.79gb</td>
-        <td>All & Jupyter</td>
-        <td>50</td>
-        <td>GPU [1-4]</td>
-        </tr>
-        <tr>
-        <td style={{ color: 'black', backgroundColor: '#aff8a2'}}>highprio</td>
-        <td>28 days</td>
-        <td>1280</td>
-        <td>No Limit</td>
-        <td>No Limit</td>
-        <td>No Limit</td>
-        <td>3g.39gb,7g.79gb</td>
-        <td>Need permission</td>
-        <td>100</td>
-        <td>All</td>
-        </tr>
-    </tbody>
-</table>
+<div className="qos-table">
+| Partition Name     | Max Wall Time | Total CPU | Max CPU per User | Max GPU per User | Max RAM per User | GPU Profile       | Uses                | Priority Tier | Nodes      |
+|-------------------|---------------|-----------|-----------------|-----------------|-----------------|-----------------|--------------------|---------------|------------|
+| 🟦 <br/> cpu1           | 14 days       | 512       | 64              | N/A             | 32 Gb           | N/A             | All (Default)       | 1             | All CPU    |
+| 🟦 <br/> cpu1.medm      | 14 days       | 512       | 64              | N/A             | 64 Gb           | N/A             | All                 | 1             | All CPU    |
+| 🟦 <br/> cpu1.largem    | 14 days       | 512       | 64              | N/A             | 128 Gb          | N/A             | All                 | 1             | All CPU    |
+| 🟦 <br/> cpu1.largec    | 14 days       | 512       | 128             | N/A             | 128 Gb          | N/A             | Need permission     | 1             | All CPU    |
+| 🟦 <br/> cpu1.largec.28d    | 28 days       | 512       | 128             | N/A             | 128 Gb          | N/A             | Need permission     | 1             | All CPU    |
+| 🟦 <br/> cpu2               | 14 days       | 480       | 32              | N/A             | 32 Gb           | N/A             | All                 | 1             | All GPU    |
+| 🟦 <br/> cpu2.medm          | 14 days       | 480       | 64              | N/A             | 64 Gb           | N/A             | All                 | 1             | All GPU    |
+| 🟦 <br/> cpu2.largec        | 14 days       | 480       | 64              | N/A             | 128 Gb          | N/A             | All                 | 1             | All GPU    |
+| 🟩 <br/> gpu           | 14 days       | 768       | 16              | 2               | 64 Gb           | 3g.39gb,7g.79gb | All & Jupyter       | 50            | GPU [1-4] |
+| 🟩 <br/> highprio      | 28 days       | 1280      | No Limit        | No Limit        | No Limit        | 3g.39gb,7g.79gb | Need permission     | 100           | All        |
 
-<!-- <img -->
-<!--   src={useBaseUrl('/img/Guides/Running-jobs-on-Montage/Partitions-and-Quality-of-Service_1.png')} -->
-<!--   alt="Resources table" -->
-<!--   style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }} -->
-<!-- /> -->
+</div>
+
