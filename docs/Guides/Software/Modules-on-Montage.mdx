@@ -3,22 +3,32 @@ title: Modules on MONTAGE
 sidebar_position: 1
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { ILabURL } from '@site/src/components/Links';
+
+
 You know, there is a high chance that whatever software you are using, somebody else is using too. Instead of each one of you having individual installations, it saves more space (and my energy), if users can access these softwares as a shared resource.
 
-Introducing module! Just type in:
+Introducing modules! Just type in:
 
 ```bash
 module av
 ```
 
-You will be presented with a slew of softwares.
+You will be presented with a list of loads of softwares.
+
+<img
+  src={useBaseUrl('/img/Guides/Software/Modules-on-Montage_1.png')}
+  alt="Resources table"
+  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+/>
 
 :::info Your software not in the list?
-Just drop us a software install request at [this iLab link](https://mum.ilab.agilent.com/service_item/new/4628?spt_id=14652).
+Just drop us a software install request at <ILabURL>iLab</ILabURL>
 :::
 
 
-You figured a softwares that you want to use? If it is just a matter of checking out those softwares, (say I am interested in a software named parallel) go ahead in the login node, just type in:
+You figured the list contain a software that you want to use? Say I am interested in a software named parallel, go ahead in the login node, just type in:
 
 ```bash
 module load parallel
@@ -84,4 +94,11 @@ Say throughout your workflow:
     # the rest of the code for step1
     # ...
     ```
+:::
+
+
+:::danger
+Keep in mind, when you load a software module, it comes with the dependencies. Say prior to loading any module, you have python 3.12, with packages like pandas. When you load a software module (like medaka), that module comes with its own python version and dependencies, and that was how I was caught red-handed not realizing that pandas was not available, because it wasn't the same python that I meant to use.
+
+In that case, just `module unload medaka` should solve the problem.
 :::

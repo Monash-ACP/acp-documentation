@@ -177,10 +177,10 @@ const config: Config = {
         {
           title: 'Documentation',
           items: [
-	    {
-	      label: 'Guides',
-	      to: '/Guides/Overview'
-	    },
+            {
+              label: 'Guides',
+              to: '/Guides/Overview'
+            },
             {
               label: 'RDS (Coming soon!)',
               to: '/RDS',
@@ -225,6 +225,9 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+  customFields: {
+    iLabURL: "https://mum.ilab.agilent.com/service_item/new/4628?spt_id=14652",
+  },
 };
 
 export default config;

@@ -1,10 +1,24 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-function RegistrationURL({ children }) {
-  const {siteConfig} = useDocusaurusContext();
+
+function ConfigLink({
+  field,
+  children
+}: {
+  field: keyof any;
+  children: React.ReactNode;
+}) {
+  const { siteConfig } = useDocusaurusContext();
+  const url = siteConfig.customFields[field] as string;
+
+  return <a href={url}>{children}</a>
+}
+
+export function ILabURL({ children }: { chilren: React.ReactNode }) {
+  const { siteConfig } = useDocusaurusContext();
   return (
-    <a href={siteConfig.customFields.registrationURL}>
+    <ConfigLink field="iLabURL">
       {children}
-    </a>
+    </ConfigLink>
   );
 }
