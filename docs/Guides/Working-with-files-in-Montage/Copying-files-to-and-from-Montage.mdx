@@ -5,31 +5,59 @@ sidebar_position: 4
 
 There are a few options to do that. First is:
 
-- A GUI interface like FileZilla
+## GUI interface like FileZilla or WinSCP
 
 This is a simple user-friendly way to transfer files. What you need will be your username, password, and the IP address of the ACP.
 
+Skip the reading. Here, watch this:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/adxmlHDim6c?si=7IWA7NIQK2ticxsS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+or this:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vtfpzSdlcGM?si=H_2Jcdn-6Zmp6098" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 :::danger
-Always remember the IP address!! It is `10.168.151.1`.
+- Always remember the IP address of MONTAGE login node!! It is `10.168.151.1`.
+- Also, if you have to pick the port, that would be [port 22](https://www.jscape.com/blog/what-port-does-sftp-use).
 :::
 
+
+## Through a CLI tool like `rsync` or `scp` 
+
+Personally, I am more comfortable with `rsync`, it got some useful options.
+
+Here some example code:
+
+```bash
+# To send files from local (e.g.: laptop) to MONTAGE
+rsync [source_path] [user]@[ip-addr]:[dest_path]
+rsync text.txt u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/
+
+# To copy from MONTAGE back to my laptop
+rsync [user]@[ip-addr]:[source_path] [dest_path]
+rsync u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/final_output.txt ./text.txt
+
+# Useful options
+#         -r: If you are transferring folders, it has to be recursive
+#         -a: Archive mode to preserve file info such as permissions, times, symlinks, etc.
+#             Just trust me, its good
+#         -v: Verbose
+#         -h: Human readable file size. 2.1G, instead of 2123473203
+# --progress: Show transfer progress, so you know something is happening
+```
 :::tip
-I remembered using WinSCP too, I had to work on a Windows laptop. It worked just like FileZilla.
+With rsync, there are some useful options. I usually do: `rsync -r --progress`, `-r` when it is a folder, and I want the transfer to be recursive; `--progress` shows the percentage of transfer per file, gives me an idea of how much longer it will take to complete data transfer.
+:::
+:::info
+Some people uses scp or sftp, that is fine too
 :::
 
-- Through a CLI tool like `rsync` or `scp` 
-    ```bash
-    # To send files from local (e.g.: laptop) to MONTAGE
-    rsync [source_path] [user]@[ip-addr]:[dest_path]
-    rsync text.txt u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/
+## Through a JupyterLab/Jupyter Notebook session
 
-    # To copy from MONTAGE back to my laptop
-    rsync [user]@[ip-addr]:[source_path] [dest_path]
-    rsync u0001@10.168.151.1:/ibm/gpfs/u0001/Project1/final_output.txt ./text.txt
-    ```
-    :::tip
-    With rsync, there are some useful options. I usually do: `rsync -r --progress`, `-r` when it is a folder, and I want the transfer to be recursive; `--progress` shows the percentage of transfer per file, gives me an idea of how much longer it will take to complete data transfer.
-    :::
-    :::info
-    Some people uses scp or sftp, that is fine too
-    :::
+Just drag and drop your files.
+
+<img
+  src={require('@site/static/img/Guides/Working-with-files-in-Montage/Copying-files-to-and-from-Montage_1.png').default}
+/>
+
+To download files from MONTAGE to your laptop, just right-click on your file, and select download.
