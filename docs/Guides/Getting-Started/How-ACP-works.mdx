@@ -3,6 +3,8 @@ title: How ACP works
 sidebar_position: 1
 ---
 
+## Introduction
+
 First of all, jargons:
 
 <blockquote>
@@ -11,22 +13,24 @@ Advanced Computing Platform (ACP) is the team.
 MONTAGE is the server, or the high performance computing (HPC) cluster, or the computer.
 </blockquote>
 
-MONTAGE (**MON**ash Malaysia fu**T**uristic **A**rchitechture for next **G**eneration r**E**search) is a HPC cluster, made up of thousands of CPUs (and GPUs) with very fast networking between them. This setup is ideal for workloads that can be parallelised, that is, jobs that can be split up into smaller chunks which can be run simultaneously. Parallelising such workloads can be dramatically faster than if you had to run that same workload on your personal computer.
+MONTAGE (**MON**ash Malaysia Fu**T**uristic **A**rchitecture for Next **G**eneration R**E**search) is a HPC cluster, made up of thousands of CPUs (and GPUs) with very fast networking between them. This setup is ideal for workloads that can be parallelised, that is, jobs that can be split up into smaller chunks which can be run simultaneously. Parallelising such workloads can be dramatically faster than if you had to run that same workload on your personal computer.
 
 <img
-src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_1.png').default}
-alt="Monash ACP Banner"
-style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+  src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_1.png').default}
+  alt="Monash ACP Banner"
+  style={{ width: '80%', display: 'block', margin: '0 auto 1.5rem auto', objectFit: 'cover' }}
 />
 
 In modern HPC clusters, tasks are efficiently executed across multiple interconnected nodes, allowing for parallel processing similar to cars traveling to different destinations concurrently. This scalability is advantageous, particularly when managing numerous small simulations simultaneously. Conversely, traditional mainframe HPC relies on a single powerful node, akin to a truck, which poses challenges for scaling out. In such systems, simulations may need to be processed sequentially, resembling the delivery of goods to destinations one after the other.
+
+## Nodes
 
 MONTAGE is made up of many nodes. There are two main types of nodes:
 
 <img
   src={require('@site/static/img/Guides/Getting-Started/How-ACP-works_2.png').default}
   alt="Monash ACP Banner"
-  style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+  style={{ width: '80%', display: 'block', margin: '0 auto 1.5rem auto', objectFit: 'cover' }}
 />
 <!-- '../../../static/img/Guides/Getting-Started/How-ACP-works_1.png' -->
 | Type of node | How many? | Purpose | 
@@ -41,14 +45,15 @@ The login nodes are lightweight and are shared by many users at once. You must n
 **If you repeat this after having already been warned, your access to MONTAGE may be revoked.**
 :::
 
-Every MONTAGE user can freely connect to the login nodes, but you cannot simply connect to a compute node to start running your workload. Instead, we rely on a job scheduler called Slurm. Slurm is responsible for managing all of the resources on Montage (e.g. CPUs, GPUs, memory, nodes, etc.) and sharing those resources fairly between all users on Montage. The basic idea is:
+## SLURM, the Scheduler
+Every MONTAGE user can freely connect to the login nodes, but you cannot simply connect to a compute node to start running your workload. Instead, we rely on a job scheduler called SLURM. SLURM is responsible for managing all of the resources on Montage (e.g. CPUs, GPUs, memory, nodes, etc.) and sharing those resources fairly between all users on Montage. The basic idea is:
 
 1. You connect to a login node.
-1. Submit a job allocation request to Slurm. This include specifics:
+1. Submit a job allocation request to SLURM. This include specifics:
     - How many CPUs?
     - How much memory (RAM)?
     - How long will this job need these resources?
-1. Slurm places your job in its queue. It will quickly identify available resources to allocate for your job.
+1. SLURM places your job in its queue. It will quickly identify available resources to allocate for your job.
 1. Your job will eventually run on the allocated resources on the compute nodes.
 
-There is still a lot for you to learn about how to run jobs on MONTAGE! Dive into [Running jobs on Montage](../Running-jobs-on-Montage/Batch-jobs.mdx) to learn more.
+There is still a lot to learn about how to run jobs on MONTAGE! Dive into [Running jobs on Montage](../Running-jobs-on-Montage/Batch-jobs.mdx) to learn more.

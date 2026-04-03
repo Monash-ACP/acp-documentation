@@ -90,3 +90,34 @@ Dont let us catch you not reading on [Resources in Slurm](Specifying-resources-i
 | `sinfo` | Reports system status |
 | `sacct` | Provides info about running/completed jobs |
 
+Example usage:
+
+```bash
+scontrol show node
+```
+See available compute resources on the cluster
+
+```bash
+scontrol show job <job_id>
+```
+See detailed information about a running job
+
+```bash
+sacct -j <job_id>
+```
+See accounting information about the specified job
+
+```bash
+sinfo -o "%20N %10c %10m %25f %10G"
+```
+- -o specifies output format
+- N: node name
+- c: number of cores
+- m: memory
+- f: features, typically the architecture or associated GPU type
+- G: GRES (**G**eneric **RES**ources)
+
+```bash
+squeue --me
+```
+View the status of your own jobs

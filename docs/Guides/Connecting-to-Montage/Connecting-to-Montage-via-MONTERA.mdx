@@ -1,0 +1,59 @@
+---
+title: Connecting to MONTAGE via MONTERA
+sidebar_position: 1
+---
+
+MONTERA is our modern, web-based portal for interacting with the MONTAGE HPC clusters. It provides a seamless interface for managing Slurm jobs and launching interactive computing environments directly from your browser, eliminating the need for complex SSH tunnels or local client configuration.
+
+## Logging in to MONTERA
+
+:::info
+As usual, to connect to MONTERA, you will have to be connected to the Monash Malaysia VPN network.
+:::
+
+1. Open this link in your browser, `http://10.168.151.1:3000`; bookmark this link if you want.
+1. You will be greeted by a secure login page. Key in your HPC credentials.
+1. You are in!
+
+<img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_Dashboard.png').default}
+alt="Connecting-to-Montage-via-MONTERA_Dashboard"
+style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+/>
+
+## The Dashboard Overview
+
+Once logged in, the **HPC Dashboard** provides a real-time snapshot of the cluster's health and your personal resource usage:
+
+- **Change your password:** Easily change your password here.
+- **Cluster Occupancy:** View available and in-use CPUs, Nodes, and GPUs (including specific models like NVIDIA A100 or H100).
+- **Storage Quota:** Monitor your home directory and project space usage to avoid "disk full" errors during heavy computation.
+- **Active Services:** A quick-access list of any interactive sessions you currently have running.
+
+## Running Interactive Apps
+
+MONTERA’s primary feature is the **One-Click Launch** for interactive applications. These run as standard Slurm jobs on compute nodes but are proxied directly to your browser.
+
+### 1. Launching a Remote Desktop
+If you need a full GUI environment (for tools like MATLAB or visual data exploration), select **Desktop**. MONTERA will initialize a VNC session and provide a "Connect" button once the job is allocated.
+
+### 2. JupyterLab & VS Code
+For development, you can launch:
+- **JupyterLab:** Choose your favorite Conda environment or Python version from the dropdown.
+    <img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_JupyterLab.png').default}
+    alt="Connecting-to-Montage-via-MONTERA_JupyterLab"
+    style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+    />
+- **VS Code (Web):** Provides a full IDE experience running directly on a compute node with access to high-performance local storage.
+
+### 3. RStudio
+Data scientists can launch RStudio Server instances pre-configured with specific modules or environments, ideal for heavy statistical processing.
+
+## Monitoring Your Jobs
+
+The **Jobs** tab allows you to track all your activity:
+- **Real-time Metrics:** See live CPU, Memory, and GPU utilization for running sessions.
+- **Job Management:** Cancel hung sessions or view the output logs (`.vnc/acp_%j.log`) directly for troubleshooting.
+
+:::important
+Always remember to **Cancel** your interactive jobs once you are finished to free up valuable cluster resources for other researchers.
+:::
