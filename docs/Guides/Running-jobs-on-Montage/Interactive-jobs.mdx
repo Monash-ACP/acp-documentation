@@ -3,3 +3,53 @@ title: Interactive jobs
 sidebar_position: 2
 ---
 
+Interactive jobs allow you to log directly into a compute node to run commands, test scripts, or debug your applications in real-time. Instead of waiting for a batch script to finish and checking log files, you get a shell directly on the node.
+
+## Running a CPU Interactive Job
+
+To start an interactive session on a CPU node, use the `srun` command. We recommend using the `--qos=short` flag for faster scheduling if your work will take less than 2 hours.
+
+```bash
+srun -p cpu -c 4 --mem=16G --qos=short --time=02:00:00 --pty bash
+```
+
+### Parameters Breakdown:
+- `-p cpu`: Specifices the `cpu` partition.
+- `-c 4`: Requests 4 CPU cores (optional).
+- `--mem=16G`: Requests 16GB of RAM (optional).
+- `--qos=short`: Uses the high-priority short queue (max 2 hours).
+- `--time=02:00:00`: Sets the duration of your session.
+- `--pty bash`: Starts a pseudo-terminal with a bash shell.
+
+---
+
+## Running a GPU Interactive Job
+
+If your work requires a GPU (e.g., for AI/ML debugging), request a node from the `gpu` partition:
+
+```bash
+srun -p gpu --gres=gpu:1 -c 4 --mem=16G --qos=short --time=02:00:00 --pty bash
+```
+
+### Parameters Breakdown:
+- `-p gpu`: Specifies the `gpu` partition.
+- `--gres=gpu:1`: Requests 1 GPU.
+- `-c 4`: Requests 4 CPU cores (optional).
+- `--mem=16G`: Requests 16GB of RAM (optional).
+- `--qos=short`: Ensures the job is prioritized for a short session.
+
+---
+
+## Best Practices
+
+:::warning
+**Don't forget to exit!** 
+When you are done with your interactive session, type `exit` or press `Ctrl + D`. If you just close your terminal, the job might keep running on the cluster and consume your project's resources until the time limit is reached.
+:::
+
+:::tip
+Interactive jobs are great for:
+- Testing if your Python environment has the right packages.
+- Compiling code that takes a long time.
+- Running interactive tools like `htop` or `nvidia-smi` to monitor performance.
+:::

@@ -1,31 +1,85 @@
 ---
 title: Batch jobs
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-There will be a few prerequisites here:
-- You worked in the UNIX terminal before? Will need a bit of familiarity.
-- Your wrote bash scripts? python scripts?
-- Can you edit scripts while being in the ACP?
-    - Maybe you grokked with NeoVim, or `nano` is fine for you?
-    - Or maybe you figured out a way to sftp to the ACP via VSCode or Sublime?
+Batch jobs are the most common way to run large-scale or long-running computations on Montage. Unlike interactive jobs, you submit a script to the Slurm scheduler, and it will run your code as soon as the requested resources become available.
 
+## How to Submit a Batch Job
 
-If you did not tick to all of the above, yeah, git gud first.
+To submit a batch job, you create a shell script (usually ending in `.sh`) that contains your commands and special SLURM directives starting with `#SBATCH`.
 
-Next, all you have to do, is just figure out the resources you need:
-- How much RAM do you need?
-- Will you need GPU?
-- How long, at most, will you need to reserve the resource of individual jobs?
+### 1. Create your job script
+Here are some common templates you can use:
 
-Once you figured that out, add the relevant SLURM lines in your script.
-
-
+#### Minimal single-node CPU job
 ```bash
-#SLURM ....
+#!/bin/bash
+#SBATCH --job-name=example_job       # Job name
+#SBATCH --output=example_job.out     # Standard output file
+#SBATCH --error=example_job.err      # Standard error file. Remember, log your jobs
+#SBATCH --time=01:00:00              # Maximum runtime (HH:MM:SS)
+#SBATCH --partition=cpu              # Partition/queue to submit to
+#SBATCH --ntasks=1                   # Number of tasks (processes)
+#SBATCH --cpus-per-task=1            # Number of CPU cores per task
 
+# Your commands go here
+echo "Running on $(hostname)"
+python my_script.py
 ```
 
+#### Multi-core single-node job (GPU)
+```bash
+#!/bin/bash
+#SBATCH --job-name=multi_core_test
+#SBATCH --output=multi_core.out
+#SBATCH --error=multi_core.err
+#SBATCH --time=02:00:00
+#SBATCH --partition=gpu              # GPU partition!
+#SBATCH --gres=gpu:1                 # Request 1 GPU
+#SBATCH --ntasks=1                   
+#SBATCH --cpus-per-task=4            # Use 4 CPU cores
+#SBATCH --mem=16G                    # Memory per node
 
+module load anaconda
+conda activate my_env
+python train_model.py
+```
 
+#### Multi-node MPI job
+```bash
+#!/bin/bash
+#SBATCH --job-name=mpi_simulation
+#SBATCH --output=mpi_sim.out
+#SBATCH --error=mpi_sim.err
+#SBATCH --time=04:00:00
+#SBATCH --partition=cpu
+#SBATCH --nodes=2                     # Number of nodes
+#SBATCH --ntasks-per-node=8           # Tasks per node
+#SBATCH --cpus-per-task=1             # CPU cores per task
+#SBATCH --mem=32G                     # Memory per node
 
+module load openmpi
+mpirun ./my_mpi_app
+```
+
+### 2. Submit the job
+Once your script (e.g., `my_job.sh`) is ready, submit it using the `sbatch` command:
+
+```bash
+sbatch my_job.sh
+```
+
+### 3. Check your job status
+After submission, you will receive a **Job ID**. You can check the status of your job with:
+```bash
+squeue --me
+```
+
+---
+
+## Prerequisites for Batch Jobs
+Before running batch jobs, ensure you have:
+- Familiarity with the [UNIX terminal](../Getting-Started/Prerequisites).
+- Your code (Python, R, C++, etc.) ready and tested.
+- A way to [edit scripts](./Editing-files) directly on Montage (e.g., VS Code Remote-SSH or NeoVim).

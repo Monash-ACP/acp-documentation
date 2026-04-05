@@ -3,13 +3,30 @@ title: Editing files
 sidebar_position: 6
 ---
 
-## Through a text editor like VSCode or Sublime Text
+## Through a text editor like VS Code (Recommended)
 
-Well, maybe you are thinking, write a script on your laptop, upload it to the ACP, and run it. **BAD IDEA**.
+The most powerful way to edit files on the ACP is using **VS Code** with the **Remote - SSH** extension. This allows you to open folders and edit files directly on the server as if they were on your local machine.
 
-What you probably want to do is, make an SFTP connection from your text editor to the ACP. Look into these links:
-- [VSCode](https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp)
+1.  **Install VS Code**: Download it from [code.visualstudio.com](https://code.visualstudio.com/).
+2.  **Install Extension**: Open VS Code, go to the Extensions view (`Ctrl+Shift+X`), and search for **"Remote - SSH"** (by Microsoft). Install it.
+3.  **Connect**:
+    - Click the "Remote Explorer" icon in the sidebar or press `F1` and type `Remote-SSH: Connect to Host...`.
+    - Select **Add New SSH Host**.
+    - Enter: `ssh <your-username>@10.168.151.1`
+    - Choose a configuration file (usually the default one in your home directory).
+    - Click **Connect** in the notification that pops up and enter your password when prompted.
+4.  **Open Folder**: Once connected, click **Open Folder** in the explorer and navigate to your project directory (e.g., `/home/<username>`).
+
+:::tip
+This method is much better than uploading/downloading files manually because it handles everything in the background and gives you full access to VS Code's features (IntelliSense, terminal, etc.) directly on the server.
+:::
+
+## Other Text Editors
+
+If you prefer other editors, you can set up an SFTP connection:
+
 - [Sublime Text](https://medium.com/@daniwhkim/remote-ftp-sftp-with-sublime-de7d71a2b400)
+- [Atom/SFTP](https://atom.io/packages/sftp-deployment) (Deprecated, but still usable for some)
 
 ## Through the terminal while connected on the ACP
 
@@ -20,13 +37,14 @@ nano /path/to/script_to_edit.sh
 ```
 
 But to the power users out there, NeoVim is the way to go, if you want to:
+
 - Move **FAST** through your files and folders.
 - Modal editing.
-- *quickfixlist*, *buffers*
+- _quickfixlist_, _buffers_
 - LSP integration
 - Fuzzy finding your:
-    - Files
-    - Diagnostics 
+  - Files
+  - Diagnostics
 - Terminal integration
 - Take advantage of vim plugins
 - Have fun using a text editor
@@ -35,4 +53,13 @@ All these goodies, while being in the terminal? And without your hand ever leavi
 
 If some of these terms seem unfamiliar to you, you are missing out. Check out this video for a preview of why vim/NeoVim:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/E-ZbrtoSuzw?si=rtIz9BBl9YQwzANp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/E-ZbrtoSuzw?si=rtIz9BBl9YQwzANp"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
