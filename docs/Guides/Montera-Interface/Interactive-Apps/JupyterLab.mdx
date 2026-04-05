@@ -33,6 +33,10 @@ MONTERA simplifies python environment management through the **Environment Type*
 - **Anaconda / Conda**: Select from global cluster installations (e.g., `/app/anaconda/2024.02`) or your own custom conda environments.
 - **Python venv**: Use standard Python virtual environments located in your home or project directory.
 
+:::important JupyterLab Package Requirement
+If you are using a **custom** conda environment or python venv, it MUST have the `jupyterlab` package installed (e.g., `pip install jupyterlab` or `conda install jupyterlab`). Without this, the shell will fail to launch the web interface.
+:::
+
 ## Accessing JupyterLab
 
 Once your session status is `RUNNING` in the **My Jobs** tab:
