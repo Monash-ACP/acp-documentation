@@ -34,7 +34,7 @@ Understanding the cluster's physical hardware, its logical Slurm partitions, and
   .bg-gpu { background-color: #aff8a2; }
 `}</style>
 
-## 🖥️ Compute Node Specifications
+## Compute Node Specifications
 
 Below are the hardware specifications for all 14 compute nodes. Use this reference when specifying resources in your `#SBATCH` scripts.
 
@@ -61,7 +61,7 @@ Below are the hardware specifications for all 14 compute nodes. Use this referen
 
 ---
 
-## 🚦 Slurm Partitions and QoS
+## Slurm Partitions and QoS
 
 Partitions group nodes together, while **QoS** (Quality of Service) flags define your priority and wall-time limits.
 
@@ -90,7 +90,7 @@ Always use a QoS flag to set your job's duration and priority.
 
 ---
 
-## 🎮 GPU Selection and GRES
+## GPU Selection and GRES
 
 Montage uses **MIG** (Multi-Instance GPU) technology on some nodes to allow multiple users to share a single physical A100. For high-performance work, dedicated A100/H100 nodes are also available.
 

@@ -1,0 +1,50 @@
+---
+title: My Jobs
+sidebar_position: 2
+---
+
+The **My Jobs** tab provides a real-time, high-fidelity overview of all your active, pending, and recently completed workloads on the Montage cluster through the MONTERA interface.
+
+<img
+  src={
+    require("@site/static/img/Guides/Montera-Interface/My_Jobs_Unified.png")
+      .default
+  }
+  alt="MONTERA My Jobs Dashboard"
+  style={{
+    width: "100%",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+    marginBottom: "2rem",
+  }}
+/>
+
+## Live Resource Summary
+
+The summary tiles at the top provide an aggregate view of all resources currently allocated to your active MONTERA sessions:
+- **Total CPUs**: The sum of all cores across your running jobs.
+- **Total Memory**: The aggregate RAM currently reserved for your workspaces.
+- **Total GPUs**: Number of physical GPUs or MIG slices allocated to your sessions.
+- **Total VRAM Usage**: A real-time readout of how much GPU memory is actually being consumed by your applications.
+
+## Individual Job Monitoring
+
+For each active session (e.g., VS Code Server or File Browser), MONTERA provides deep visibility into the allocated resources:
+
+- **Resource Allocation**: Clearly see the exact CPU and RAM limits for each specific job (e.g., `2 CPUs | 8G RAM`).
+- **CPU Load**: A live percentage showing how hard your application is pushing the requested cores.
+- **Memory Used**: Real-time tracking of RAM usage to help you avoid "Out of Memory" (OOM) crashes.
+- **VRAM Usage**: For GPU-enabled jobs, this tracks the active memory on the NVIDIA card, ensuring you've requested the correct MIG slice size for your model.
+
+## Time Tracking
+Keep an eye on the **Time Matrix** for each job to see:
+- **Time Elapsed**: How long your current session has been running.
+- **Wall-time Limit**: The maximum duration you specified during launch.
+
+:::tip Resource Optimization Tip
+If you notice high memory allocation (RAM) but consistently low utilization in your applications, consider reducing the requested memory in future jobs. This allows more jobs to run on the cluster and improves your scheduling priority. For GPUs, ensure your code (e.g., PyTorch/TensorFlow) is actually utilizing the allocated GPU devices.
+:::
+
+## Session Management
+- **Status tracking**: Immediate visual feedback for `RUNNING` or `PENDING` states.
+- **Quick Termination**: Use the **Terminate** (Red X) icon to immediately stop any session and free up cluster resources once your work is complete.

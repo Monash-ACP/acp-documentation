@@ -1,0 +1,70 @@
+---
+title: Terminal
+sidebar_position: 1
+---
+
+For users who need quick shell access without opening a separate SSH client, MONTERA provides a built-in terminal that runs directly in your browser. This persistent shell allows you to execute commands, manage files, and interact with the cluster nodes seamlessly.
+
+## Launching a Terminal
+
+The terminal launch interface allows you to request specific compute resources for your shell session:
+
+<img
+  src={
+    require("@site/static/img/Guides/Montera-Interface/Terminal_Launch_UI.png")
+      .default
+  }
+  alt="MONTERA Terminal Launch Interface"
+  style={{
+    width: "100%",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+    marginBottom: "2rem",
+  }}
+/>
+
+### Resource Selection
+- **Partition**: Select between `cpu` or `gpu` partitions based on your needs.
+- **Time Limits**: Choose the duration for your session (e.g., 1 hour or more).
+- **VCPUs and Memory**: Adjust the requested cores and RAM for your interactive work.
+- **SBATCH Command**: MONTERA automatically generates the corresponding Slurm command for you to review before launching.
+
+Click **Launch Terminal** to submit your request to the Slurm scheduler.
+
+## Active Sessions
+
+Once launched, your terminal session will appear in the **Active Terminal Sessions** table:
+
+- **Job ID**: The unique Slurm ID for your interactive job.
+- **Status**: Will transition from `PENDING` to `RUNNING` once a compute node is allocated.
+- **Time Matrix**: Tracks your remaining session time.
+- **Actions**:
+  - **Connect**: Open the terminal interface once the status is `RUNNING`.
+  - **Terminate**: Immediately stop the session and free up resources.
+
+## Persistent Shell Interface
+
+When you click **Connect**, you will be directed to the MONASH ACP persistent shell environment:
+
+<img
+  src={
+    require("@site/static/img/Guides/Montera-Interface/Terminal_Interface.png")
+      .default
+  }
+  alt="MONTERA Persistent Shell Interface"
+  style={{
+    width: "100%",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+    marginBottom: "2rem",
+  }}
+/>
+
+The shell provides a full Linux environment where you can:
+- **Compile and Debug**: Build your code directly on the compute nodes.
+- **Manage Data**: Move, copy, and organize files using standard command-line tools.
+- **Submit Batch Jobs**: Draft and launch `.sh` scripts using the `sbatch` command.
+
+:::important Free Up Resources
+Interactive terminal sessions consume cluster cores and memory even when idle. Always use the **Terminate** button in the MONTERA dashboard once you have finished your work to ensure resources are available for other researchers.
+:::

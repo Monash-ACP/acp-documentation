@@ -1,0 +1,49 @@
+---
+title: JupyterLab
+sidebar_position: 2
+---
+
+JupyterLab is the preferred interactive development environment for data science and machine learning on Montage. MONTERA allows you to launch dedicated JupyterLab servers with full access to the cluster's GPUs and pre-configured software environments.
+
+## Configuring Your Session
+
+The JupyterLab launch interface provides granular control over your compute resources and software stack:
+
+<img
+  src={
+    require("@site/static/img/Guides/Montera-Interface/JupyterLab_Launch_UI.png")
+      .default
+  }
+  alt="MONTERA JupyterLab Configuration Interface"
+  style={{
+    width: "100%",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+    marginBottom: "2rem",
+  }}
+/>
+
+### Resource Selection
+- **Partition**: Select `cpu` for general data processing or `gpu` for model training.
+- **GPU Type**: Choose specific MIG slices (e.g., `1g.10gb`) to optimize resource usage.
+- **Compute Limits**: Specify the number of Nodes, VCPUs, and Memory (GB) required for your analysis.
+
+### Environment Management
+MONTERA simplifies python environment management through the **Environment Type** dropdown:
+- **Anaconda / Conda**: Select from global cluster installations (e.g., `/app/anaconda/2024.02`) or your own custom conda environments.
+- **Python venv**: Use standard Python virtual environments located in your home or project directory.
+
+## Accessing JupyterLab
+
+Once your session status is `RUNNING` in the **My Jobs** tab:
+
+1. Click the **Connect** button.
+2. You will be prompted for a password or token.
+3. Copy the **Access Token** provided in the MONTERA interface (displayed above the connect button) and paste it into the Jupyter login page.
+
+:::tip Kernel Persistence
+Your Jupyter notebooks and installed packages remain persistent across sessions. However, the Slurm job itself has a time limit. Ensure you save your work and checkpoint your models regularly.
+:::
+
+## Ending Your Session
+When finished, shut down your kernels from within JupyterLab and use the **Terminate** button in the MONTERA dashboard to stop the Slurm job and free up the resources for other researchers.

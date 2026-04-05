@@ -1,0 +1,37 @@
+---
+title: Remote Desktop
+sidebar_position: 1
+---
+
+For applications that require a full graphical user interface (GUI), such as MATLAB or visual data exploration tools, you can launch a dedicated Remote Desktop session.
+
+## Launching a Desktop
+
+1. Select **Desktop** from the left navigation panel.
+2. **Configure Resources**: Pick your required CPU cores, RAM, and GPU resources.
+
+    <img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_Desktop1.png').default}
+    alt="Configure Desktop"
+    style={{ width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+    />
+
+3. Click **Launch Desktop**. Your request will be queued (PENDING) until resources are allocated.
+
+    <img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_Desktop2.png').default}
+    alt="Pending Session"
+    style={{ width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', marginTop: '1.5rem' }}
+    />
+
+4. **Connect**: Once the status changes to **RUNNING**, click the **Connect** button. A new tab will open with your Linux desktop environment.
+
+    <img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_Desktop3.png').default}
+    alt="Connected Session"
+    style={{ width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', marginTop: '1.5rem' }}
+    />
+
+:::tip Priority
+Request only the resources you actually need. Jobs with smaller resource requests typically have higher scheduling priority and shorter wait times.
+:::
+
+## Ending Your Session
+When finished, close your applications and use the **Terminate** button in MONTERA to stop the Slurm job and free up the resources.

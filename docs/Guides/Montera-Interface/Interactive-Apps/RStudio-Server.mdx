@@ -1,0 +1,31 @@
+---
+title: RStudio Server
+sidebar_position: 4
+---
+
+Data scientists and researchers can launch pre-configured RStudio Server instances to perform heavy statistical processing and data visualization.
+
+## Launching RStudio
+
+1. Select **RStudio Server** from the left navigation panel.
+2. **Configure**: Choose your required CPU, Memory, and wall-time.
+3. **Launch**: Click **Start RStudio**.
+
+### Connecting with Access Token
+Just like VS Code, RStudio requires an **Access Token** for secure browser access:
+
+1. Click **Connect** on the active session.
+2. Copy the **Access Token** provided in the MONTERA interface.
+3. On the RStudio login page, enter your Montage **username** and paste the **Access Token** as the password.
+
+    <img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_RStudioServer1.png').default}
+    alt="RStudio Login"
+    style={{ width: '80%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+    />
+
+4. You are now logged in to RStudio Server with direct access to your high-performance storage paths.
+
+    <img src={require('@site/static/img/Guides/Connecting-to-Montage/Connecting-to-Montage-via-MONTERA_RStudioServer2.png').default}
+    alt="RStudio Interface"
+    style={{ width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', marginTop: '1.5rem' }}
+    />

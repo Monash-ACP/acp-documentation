@@ -1,0 +1,58 @@
+---
+title: MONTERA Dashboard
+sidebar_position: 1
+---
+
+The **HPC Dashboard** is your primary command center for monitoring cluster health and managing your personal account settings within MONTERA.
+
+<img
+  src={
+    require("@site/static/img/Guides/Montera-Interface/Dashboard_Unified.png")
+      .default
+  }
+  alt="MONTERA Unified Dashboard"
+  style={{
+    width: "100%",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+    marginBottom: "2rem",
+  }}
+/>
+
+## Your Account
+
+The top navigation bar allows you to manage your profile and session:
+
+- **HPC ID**: Your username is displayed prominently for reference.
+- **Manage Password**: You can change your Cluster password directly from the dashboard.
+- **Secure Logout**: Always remember to log out when using shared workstations.
+
+## Cluster Resource Status
+
+Monitor the real-time availability of the Montage cluster:
+
+- **Available CPUs**: Track how many cores are currently idle vs. the total capacity.
+- **Available Memory**: View global RAM availability across all compute nodes.
+- **Active Nodes**: See how many of the 12 total nodes are currently powering research.
+- **Available GPUs**: A high-level view of GPU occupancy, including specialized A100 and H100 cards.
+
+## Active Servers & Workspaces
+
+This section provides a live view of any interactive sessions you currently have running:
+
+- **Service Type**: Identify which app (Jupyter, Desktop, VS Code, etc.) is active.
+- **Job ID**: The SLURM job ID associated with the session.
+- **Connection Info**: The specific internal host (e.g., `10.168.151.21`) where your job is running.
+- **Time Matrix**: Track your remaining session time against the requested limit.
+- **Actions**: Use the **Connect** button to jump into your workspace, or **Terminate** to immediately stop the job and free up resources.
+
+## Storage & Quotas
+
+MONTERA provides visual progress bars for your storage allocations:
+
+- **Home Directory**: Monitor your personal 500 GB allocation.
+- **Shared Storage**: View the usage and quota for your school or project's shared space (e.g., `/ibm/gpfs/soit`).
+
+:::tip Avoid Disk Full Errors
+The dashboard is the best place to check if you are nearing your storage limit before submitting large-scale batch jobs.
+:::
