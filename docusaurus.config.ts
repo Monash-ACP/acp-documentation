@@ -188,16 +188,8 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'MUM ACP GChat',
+              href: 'https://chat.google.com/room/AAAAEb8Gwzg?cls=4',
             },
           ],
         },
@@ -206,11 +198,11 @@ const config: Config = {
           items: [
             {
               label: 'Blog',
-              to: '/blog',
+              href: 'https://www.monash.edu.my/research/platforms-and-infrastructure/infrastructure/advanced-computing',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/Monash-ACP',
             },
           ],
         },
