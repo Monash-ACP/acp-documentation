@@ -1,9 +1,12 @@
 ---
-title: Slurm Basics
+title: SLURM Basics
 sidebar_position: 1
 ---
 
+## First things first
+
 Login nodes are meant for lightweight, interactive tasks only like:
+
 - changing directories
 - browsing files and directories
 - checking/editing file contents
@@ -12,6 +15,7 @@ Login nodes are meant for lightweight, interactive tasks only like:
 - lightweight stuff
 
 ⚠️ Prohibited:
+
 - Running computationally intensive tasks or long-running jobs directly on the login node
 - Any processes that can consume significant CPU, memory, or I/O
 
@@ -20,12 +24,12 @@ Login nodes are meant for lightweight, interactive tasks only like:
 :::danger
 Repeated violations will result in revocation of access to MONTAGE and deletion of the user account (including files).
 
-Misuse of shared resources impacts the experience of all users — you are warned.
+Misuse of shared resources impacts the experience of all users — you have been warned.
 :::
 
 ## Okay, we got that out of the way...
 
-Slurm is the job scheduler. Your script that you execute is a job, and slurm manages the job execution when the resources are available. 
+SLURM is the job scheduler. Your script that you execute is a job, and SLURM manages the job execution when the resources are available.
 
 To use SLURM to execute your jobs, you need to specify a few key parameters in your job script header. These settings tell SLURM what resources you need and how your job should be scheduled. Typical decisions include:
 
@@ -43,35 +47,39 @@ If you need to run tasks interactively for testing or debugging, see the [Intera
 
 ## Commands
 
-| Command | Description |
-| -- | :-- |
-| `srun` | Initiate an interactive Slurm session |
-| `sbatch` | Submit a job to Slurm |
-| `squeue` | Reports job status |
-| `scancel` | Terminate queued/running jobs |
-| `sinfo` | Reports system status |
-| `sacct` | Provides info about running/completed jobs |
+| Command   | Description                                |
+| --------- | :----------------------------------------- |
+| `srun`    | Initiate an interactive SLURM session      |
+| `sbatch`  | Submit a job to SLURM                      |
+| `squeue`  | Reports job status                         |
+| `scancel` | Terminate queued/running jobs              |
+| `sinfo`   | Reports system status                      |
+| `sacct`   | Provides info about running/completed jobs |
 
 Example usage:
 
 ```bash
 scontrol show node
 ```
+
 See available compute resources on the cluster
 
 ```bash
 scontrol show job <job_id>
 ```
+
 See detailed information about a running job
 
 ```bash
 sacct -j <job_id>
 ```
+
 See accounting information about the specified job
 
 ```bash
 sinfo -o "%20N %10c %10m %25f %10G"
 ```
+
 - -o specifies output format
 - N: node name
 - c: number of cores
@@ -82,4 +90,5 @@ sinfo -o "%20N %10c %10m %25f %10G"
 ```bash
 squeue --me
 ```
+
 View the status of your own jobs
