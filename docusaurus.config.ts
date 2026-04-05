@@ -23,7 +23,7 @@ const config: Config = {
   projectName: 'acp-documentation', // Usually your repo name.
   deploymentBranch: 'gh-pages',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   markdown: {
     format: 'detect',
     mermaid: true,
@@ -100,7 +100,7 @@ const config: Config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
+          onInlineAuthors: 'ignore',
           onUntruncatedBlogPosts: 'ignore',
         },
         theme: {

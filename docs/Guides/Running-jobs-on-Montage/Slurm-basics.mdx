@@ -33,7 +33,7 @@ SLURM is the job scheduler. Your script that you execute is a job, and SLURM man
 
 To use SLURM to execute your jobs, you need to specify a few key parameters in your job script header. These settings tell SLURM what resources you need and how your job should be scheduled. Typical decisions include:
 
-- **Partition/queue**: Which group of nodes your job should run on, often determined by job size, time limits, or user permissions. Read on our [QOS](Partitions-and-Quality-of-Service).
+- **Partition/queue**: Which group of nodes your job should run on, often determined by job size, time limits, or user permissions. Read on our [QOS](./Cluster-Nodes-and-Partitions.mdx).
 - **Number of nodes and tasks**: How many compute nodes and tasks (e.g., MPI ranks or CPU cores) your job requires.
 - **Memory and time limits**: How much memory per node or per task, and the maximum runtime of your job.
 - **Job name and output**: Name your job and specify files for standard output and error. **Very useful to log your jobs, or good luck telling people what happened to your job when an error occurred**.
@@ -43,7 +43,7 @@ These SLURM directives are used to guide SLURM in allocating resources and sched
 If you need to run tasks interactively for testing or debugging, see the [Interactive Jobs](./Interactive-jobs.mdx) guide.
 
 > **How many cores/RAM do we have?**  
-> Check the [Resources in Slurm](./Specifying-resources-in-Slurm.mdx) guide for cluster limits and hardware specs.
+> Check the [Resources in Slurm](./Cluster-Nodes-and-Partitions.mdx) guide for cluster limits and hardware specs.
 
 ## Commands
 
