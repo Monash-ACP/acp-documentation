@@ -1,0 +1,128 @@
+---
+title: Cluster Nodes and Partitions
+sidebar_position: 2
+---
+
+Understanding the cluster's physical hardware, its logical Slurm partitions, and its GPU resources is essential for requesting the right environment for your workloads.
+
+<style>{`
+  .hpc-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .hpc-table th {
+    background-color: #fdbd88 !important;
+    color: black !important;
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  .hpc-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .type-fill {
+    display: block;
+    margin: -10px; 
+    padding: 10px;
+    font-weight: bold;
+    color: black;
+  }
+  .bg-cpu { background-color: #b3def0; }
+  .bg-gpu { background-color: #aff8a2; }
+`}</style>
+
+## 🖥️ Compute Node Specifications
+
+Below are the hardware specifications for all 14 compute nodes. Use this reference when specifying resources in your `#SBATCH` scripts.
+
+<div className="hpc-table">
+
+| Node             | Type                                          | CPU                     | System RAM | GPU Resources              |
+| :--------------- | :-------------------------------------------- | :---------------------- | :--------- | :------------------------- |
+| `mum-hpc2-comp1` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
+| `mum-hpc2-comp2` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
+| `mum-hpc2-comp3` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
+| `mum-hpc2-comp4` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
+| `mum-hpc2-comp5` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
+| `mum-hpc2-comp6` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
+| `mum-hpc2-gpu1`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu2`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu3`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu4`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu5`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `A100` (80GB) |
+| `mum-hpc2-gpu6`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `A100` (80GB) |
+| `mum-hpc2-gpu7`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `H100` (80GB) |
+| `mum-hpc2-gpu8`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `H100` (80GB) |
+
+</div>
+
+---
+
+## 🚦 Slurm Partitions and QoS
+
+Partitions group nodes together, while **QoS** (Quality of Service) flags define your priority and wall-time limits.
+
+<div className="hpc-table">
+
+| Partition Name          | Default QoS | Nodes      | Description                        |
+| :---------------------- | :---------- | :--------- | :--------------------------------- |
+| **`cpu`** (Default)      | `normal`    | Comp [1-6] | General-purpose CPU computing nodes |
+| **`gpu`**               | `normal`    | GPU [1-8]  | GPU-accelerated computing nodes    |
+
+</div>
+
+### Available QoS Levels
+Always use a QoS flag to set your job's duration and priority.
+
+<div className="hpc-table">
+
+| QoS Name    | Max Wall Time | Priority | Usage Example               |
+| :---------- | :------------ | :------- | :-------------------------- |
+| **`short`**  | 2 hours       | 200      | `--qos=short` (Quick tests) |
+| **`normal`** | 7 days        | 1        | `--qos=normal` (Default)    |
+| **`long`**   | 28 days       | 0        | `--qos=long`                |
+| **`highprio`**| Infinite      | 500      | Requires special permission |
+
+</div>
+
+---
+
+## 🎮 GPU Selection and GRES
+
+Montage uses **MIG** (Multi-Instance GPU) technology on some nodes to allow multiple users to share a single physical A100. For high-performance work, dedicated A100/H100 nodes are also available.
+
+### 1. Requesting a GPU Slice (MIG)
+Available on nodes `mum-hpc2-gpu[1-4]`. Request these using specific **GRES** strings:
+
+<div className="hpc-table">
+
+| Slice Type | GRES String      | VRAM  | Best For                     |
+| :--------- | :--------------- | :---- | :--------------------------- |
+| **Small**  | `gpu:1g.10gb:1`  | 10 GB | Small models, JupyterLab     |
+| **Medium** | `gpu:3g.40gb:1`  | 40 GB | General training, Batch jobs |
+| **Large**  | `gpu:7g.80gb:1`  | 80 GB | Large memory models (1 GPU)  |
+
+</div>
+
+### 2. Requesting a Full GPU (Dedicated)
+Available on `mum-hpc2-gpu[5-8]`. Use these for multi-GPU training or maximum NVLink performance.
+
+<div className="hpc-table">
+
+| Resource Type | GRES String     | Nodes      | VRAM (per GPU) |
+| :------------ | :-------------- | :--------- | :------------- |
+| **Full A100** | `--gres=gpu:a100:1` | gpu[5-6] | 80 GB          |
+| **Full H100** | `--gres=gpu:h100:1` | gpu[7-8] | 80 GB          |
+
+</div>
+
+### Example Job Configuration
+```bash
+#!/bin/bash
+#SBATCH --partition=gpu
+#SBATCH --qos=short          # Use short for quick start
+#SBATCH --gres=gpu:3g.40gb:1 # Request a 40GB MIG slice
+```

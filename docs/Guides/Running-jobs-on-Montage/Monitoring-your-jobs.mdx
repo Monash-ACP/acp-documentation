@@ -1,11 +1,57 @@
 ---
 title: Monitoring your jobs
-sidebar_position: 6
+sidebar_position: 5
 ---
 
-Some useful commands:
+To help you manage your resources and track your progress, we provide several custom helper commands on Montage. Use these as your first point of reference for cluster health and job status.
 
-- `show_cluster` : This command lets you see available and occupied resources on the ACP!
-- `show_job`: This command shows all your running/pending/cancelled jobs and most importantly VRAM usage for GPU users. Please utilize the maximum VRAM for your selected GPU!
-- `chk_quota`: Show your directory usage and shared storage usage.
+## 📊 Quick Overview: `show_cluster`
+This command provides a real-time summary of the cluster's CPU and GPU resource availability. Use this to check if there is space for your next job.
 
+**Sample Output:**
+```text
+╒═══════════╤═══════════╤══════════╤════════════════╤════════════════╤════════════════╤═════════════╤═════════════╕
+│           │ CPU (thr) │ A100 (dedicated) │ H100 (dedicated) │ 1g.10gb (MIG) │ 3g.40gb (MIG) │ 7g.80gb (MIG) │
+╞═══════════╪═══════════╪══════════╪════════════════╪════════════════╪════════════════╪═════════════╪═════════════╡
+│ Available │ 820 (53%) │ 1 (8%)   │ 4 (100%)       │ 6 (40%)        │ 1 (12%)        │ 4 (50%)     │ 0 (0%)      │
+│ In Use    │ 716 (47%) │ 11 (92%) │ 0 (0%)         │ 9 (60%)        │ 7 (88%)        │ 4 (50%)     │ 8 (100%)    │
+│ Reserved  │ 0 (0%)    │ 0 (0%)   │ 0 (0%)         │ 0 (0%)         │ 0 (0%)         │ 0 (0%)      │ 0 (0%)      │
+│ Total     │ 1536      │ 12       │ 4              │ 15             │ 8              │ 8           │ 8           │
+╘═══════════╧═══════════╧══════════╧════════════════╧════════════════╧════════════════╧═════════════╧═════════════╛
+```
+
+---
+
+## 🏃 Job Status & VRAM: `show_job`
+This is your most important command for monitoring active workloads. It shows your running/pending jobs and, crucially, tracks **GPU VRAM usage** in real-time.
+
+> [!IMPORTANT]
+> Always monitor your VRAM! If your job is using significantly less than your requested slice (e.g., using 5GB out of a 40GB slice), consider using a smaller MIG slice next time to free up resources for others.
+
+**Sample Output:**
+```text
+╒══════╤══════════╤══════════╤══════════╤══════════╤══════════╤══════════╤══════════╤══════════╤══════════╤══════════╕
+│ JobID│ Partition│ Name     │ User     │ State    │ Time     │ Nodes    │ CPU      │ Memory   │ GPU (VRAM)│ GPU (util)│
+╞══════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╡
+│ 12345│ gpu      │ train_v1 │ marcus   │ RUNNING  │ 01:20:00 │ hpc2-gpu1│ 4        │ 16G      │ 32G / 40G │ 85%      │
+╘══════╧══════════╧══════════╧══════════╧══════════╧══════════╧══════════╧══════════╧══════════╧══════════╧══════════╛
+
+Job history is hidden by default. To view past jobs, run: show_job -d <days>
+```
+
+---
+
+## 📁 Disk Quota: `chk_quota`
+Monitor your home directory and shared project storage usage to avoid job failures due to "Disk full" errors.
+
+**Sample Output:**
+```text
+Home directory usage
+╒═════════════════╤════════════╤═════════╤══════════╕
+│ Path            │      Usage │   Quota │   % Used │
+╞═════════════════╪════════════╪═════════╪══════════╡
+│ /home/marcus    │ 1,846.0 GB │ 2,000 GB│    92.3% │
+├─────────────────┼────────────┼─────────┼──────────┤
+│ /ibm/gpfs/admin │ 4,012.0 GB │ 5,000 GB│    80.2% │
+╘═════════════════╧════════════╧═════════╧══════════╛
+```
