@@ -1,0 +1,68 @@
+---
+title: OpenMPI Parallel Processing
+sidebar_position: 2
+---
+
+Message Passing Interface (MPI) is the standard for parallel computing on clusters, allowing processes to communicate across multiple CPU nodes. This guide focus on using **OpenMPI** to run parallel applications, featuring **VASP** (Vienna Ab initio Simulation Package) as the primary case study.
+
+## Understanding MPI on Slurm
+
+Slurm integrates deeply with MPI. When you request multiple nodes and tasks, Slurm provides the internal hostfile and network management that MPI needs to distribute work across the cluster.
+
+### Key Terminology
+- **Nodes**: The physical compute nodes requested.
+- **Tasks**: The number of MPI processes created (typically 1 task per CPU core).
+- **CPUs per Task**: Useful for hybrid MPI+OpenMP jobs (threading within a process).
+
+## VASP Case Study
+
+VASP performs many compute-intensive operations (FFTs, matrix inversions) that scale efficiently across multiple CPU cores via MPI. 
+
+### 1. Choosing the Correct Executable
+Depending on your research, you will likely use one of these common VASP builds:
+- `vasp_std`: Standard version for most calculations.
+- `vasp_gam`: Optimized for Gamma-point only calculations.
+- `vasp_ncl`: For non-collinear magnetic systems.
+
+### 2. Standard Slurm Submission Script
+The following script demonstrates a 2-node parallel VASP job utilizing 64 CPU cores.
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=vasp-parallel
+#SBATCH --partition=cpu
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=32
+#SBATCH --mem=128G
+#SBATCH --output=%x-%j.out
+
+# ── Load Software Stack ─────────────────────────────────────────────
+# Load the appropriate VASP and MPI modules
+module load vasp/6.4.2
+module load openmpi/4.1.5
+
+# ── Execute with mpirun ─────────────────────────────────────────────
+# Slurm automatically tells mpirun which nodes and cores to use.
+# You do NOT need to specify '-np' manually; Slurm handles it.
+mpirun vasp_std
+```
+
+## Performance Tuning for VASP
+
+### Memory Management
+VASP calculations (especially hybrid functionals or large systems) can be memory-intensive. Always ensure your `--mem` or `--mem-per-cpu` request covers the peak memory usage reported in your `OUTCAR` file.
+
+### Hybrid Parallelism (MPI + OpenMP)
+For extremely large systems, you can combine MPI processes with OpenMP threads to reduce memory pressure:
+```bash
+#SBATCH --ntasks=16
+#SBATCH --cpus-per-task=4
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+mpirun vasp_std
+```
+
+## Common MPI Troubleshooting
+
+1. **Wait-on-Lock Errors**: Typically caused by disk quota issues. Ensure your project directory has enough space for large `CHGCAR` and `WAVECAR` files.
+2. **Connectivity Failures**: If MPI cannot communicate between nodes, ensure your modules were compiled specifically for the cluster's network fabric.
+3. **Segmentation Faults**: Often a sign of insufficient memory. Try increasing the memory request or reducing the number of tasks per node.

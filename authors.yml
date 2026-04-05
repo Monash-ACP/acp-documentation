@@ -1,0 +1,19 @@
+marcus:
+  name: Marcus Lim
+  title: HPC Specialist
+  url: https://scholar.google.com/citations?user=G5iWvxgAAAAJ&hl=en
+  imageURL: https://github.com/marcuslimjunyi.png
+  socials:
+    linkedin: marcuslimjunyi
+    github: marcuslimjunyi
+
+zarul:
+  name: Zarul
+  title: System Administrator
+  imageURL: https://github.com/monash-acp.png
+
+montage-team:
+  name: Montage Team
+  title: High Performance Computing Team
+  url: https://github.com/monash-acp
+  imageURL: https://github.com/monash-acp.png

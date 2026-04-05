@@ -1,0 +1,100 @@
+---
+title: Multi-GPU Slurm Training
+sidebar_position: 1
+---
+
+Distributed Data Parallel (DDP) is the industry standard for scaling deep learning models across multiple GPUs and compute nodes. This guide explains how to implement DDP on Montage, with a focus on PyTorch and the specific network configurations of our A100/H100 cluster.
+
+## Core Concepts
+
+On Montage, we use `torchrun` to orchestrate distributed training. This tool handles the environment variables and process synchronization required for NCCL (Nvidia Collective Communications Library) to communicate between nodes.
+
+### Required Environment Variables
+- `MASTER_ADDR`: The IP address of the first node (rank 0).
+- `MASTER_PORT`: A free port on the master node (typically `29500`).
+- `WORLD_SIZE`: Total number of processes (GPUs) across all nodes.
+- `RANK`: Unique ID for each process.
+- `LOCAL_RANK`: Unique ID for a process within a single node.
+
+## Montage Network Specifics
+
+Montage uses a high-speed **`bond1`** network interface for inter-node communication. To ensure your training doesn't hang or fail, you must explicitly point NCCL to this interface.
+
+:::important MIG Environment Note
+If your job is allocated to **MIG** (Multi-Instance GPU) slices (e.g., `1g.10gb`), you must disable NCCL P2P (Peer-to-Peer) communication, as MIG does not support cross-node P2P.
+:::
+
+## 1. Python Implementation
+
+Your training script must initialize the process group using the `nccl` backend. Below is a simplified boilerplate:
+
+```python
+import os
+import torch
+from torch.nn.parallel import DistributedDataParallel as DDP
+from torch.distributed import init_process_group, destroy_process_group
+
+def ddp_setup():
+    # Set the specific device for this process
+    torch.cuda.set_device(int(os.environ["LOCAL_RANK"]))
+    # Initialize the NCCL process group
+    init_process_group(backend="nccl")
+
+def main():
+    ddp_setup()
+    device_id = int(os.environ["LOCAL_RANK"])
+    
+    # Wrap your model with DDP
+    model = MyModel().to(device_id)
+    model = DDP(model, device_ids=[device_id])
+    
+    # ... Training loop ...
+    
+    destroy_process_group()
+```
+
+## 2. Advanced Slurm Submission Script
+
+The following script automatically detects the master node's IP, configures the `bond1` interface, and handles MIG-specific P2P settings.
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=pytorch-ddp
+#SBATCH --partition=gpu
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:1
+
+# ── Master Node Detection ───────────────────────────────────────────
+# Get the first node's hostname and find its bond1 IPv4 address
+export MASTER_HOSTNAME=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
+export MASTER_ADDR=$(ssh $MASTER_HOSTNAME "ip -4 addr show bond1 | grep 'inet ' | awk '{print \$2}' | cut -d/ -f1")
+export MASTER_PORT=29500
+
+# ── NCCL Network Config ─────────────────────────────────────────────
+export NCCL_SOCKET_IFNAME=bond1
+export GLOO_SOCKET_IFNAME=bond1
+export NCCL_IB_DISABLE=1
+
+# ── Dynamic MIG Detection ───────────────────────────────────────────
+if [[ "$CUDA_VISIBLE_DEVICES" == *"MIG"* ]]; then
+    echo "MIG environment detected. Disabling NCCL P2P."
+    export NCCL_P2P_DISABLE=1
+fi
+
+# ── Launch ──────────────────────────────────────────────────────────
+srun torchrun \
+    --nnodes=$SLURM_NNODES \
+    --nproc_per_node=$SLURM_GPUS_ON_NODE \
+    --node_rank=$SLURM_NODEID \
+    --rdzv_id=$SLURM_JOB_ID \
+    --rdzv_backend=c10d \
+    --rdzv_endpoint=$MASTER_ADDR:$MASTER_PORT \
+    train_script.py
+```
+
+## 3. Best Practices for Scaling
+
+1. **Distributed Sampler**: Use `DistributedSampler` in your `DataLoader` to ensure each GPU sees a unique subset of the data.
+2. **Barrier Synchronization**: Use `torch.distributed.barrier()` to ensure all processes have performed critical operations (like downloading datasets) before proceeding.
+3. **MIG Optimization**: When using MIG, remember that VRAM is strictly partitioned. Ensure your batch size fits within the specific slice (e.g., 10GB or 40GB).

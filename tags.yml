@@ -1,0 +1,12 @@
+announcement:
+  label: Announcement
+  description: Official site-wide announcements.
+hpc:
+  label: HPC
+  description: High Performance Computing updates.
+slurm:
+  label: SLURM
+  description: Scheduler and queuing system news.
+montera:
+  label: MONTERA
+  description: MONTERA All-in-1 interface status.
