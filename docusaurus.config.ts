@@ -11,7 +11,7 @@ const config: Config = {
   favicon: 'img/monash-acp-favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://github.com',
+  url: 'https://monash-acp.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/acp-documentation/',
@@ -173,7 +173,11 @@ const config: Config = {
           title: 'Documentation',
           items: [
             {
-              label: 'Research Data Storage (Coming soon!)',
+              label: 'Guides',
+              to: '/Guides/Overview'
+            },
+            {
+              label: 'RDS (Coming soon!)',
               to: '/RDS',
             },
           ],
@@ -216,6 +220,9 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+  customFields: {
+    iLabURL: "https://mum.ilab.agilent.com/service_item/new/4628?spt_id=14652",
+  },
 };
 
 export default config;

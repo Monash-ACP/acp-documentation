@@ -1,0 +1,123 @@
+---
+title: Slurm Basics
+sidebar_position: 1
+---
+
+Login nodes are meant for lightweight, interactive tasks only like:
+- changing directories
+- browsing files and directories
+- checking/editing file contents
+- copying/transferring files
+- monitoring jobs
+- lightweight stuff
+
+⚠️ Prohibited:
+- Running computationally intensive tasks or long-running jobs directly on the login node
+- Any processes that can consume significant CPU, memory, or I/O
+
+**If we see a job running on the login node, we will send a warning to you and your supervisor.**
+
+:::danger
+Repeated violations will result in revocation of access to MONTAGE and deletion of the user account (including files).
+
+Misuse of shared resources impacts the experience of all users — you are warned.
+:::
+
+## Okay, we got that out of the way...
+
+Slurm is the job scheduler. Your script that you execute is a job, and slurm manages the job execution when the resources are available. 
+
+To use SLURM to execute your jobs, you need to specify a few key parameters in your job script header. These settings tell SLURM what resources you need and how your job should be scheduled. Typical decisions include:
+
+- **Partition/queue**: Which group of nodes your job should run on, often determined by job size, time limits, or user permissions. Read on our [QOS](Partitions-and-Quality-of-Service).
+- **Number of nodes and tasks**: How many compute nodes and tasks (e.g., MPI ranks or CPU cores) your job requires.
+- **Memory and time limits**: How much memory per node or per task, and the maximum runtime of your job.
+- **Job name and output**: Name your job and specify files for standard output and error. **Very useful to log your jobs, or good luck telling people what happened to your job when an error occurred**.
+
+These SLURM directives are typically included at the top of your script as #SBATCH headers, guiding SLURM in allocating resources and scheduling your job efficiently. Several examples:
+
+#### Minimal single-node CPU job
+```bash
+#!/bin/bash
+#SBATCH --job-name=example_job       # Job name
+#SBATCH --output=example_job.out     # Standard output file
+#SBATCH --error=example_job.err      # Standard error file. Remember, log your jobs
+#SBATCH --time=01:00:00              # Maximum runtime (HH:MM:SS)
+#SBATCH --partition=cpu              # Partition/queue to submit to
+#SBATCH --ntasks=1                   # Number of tasks (processes)
+#SBATCH --cpus-per-task=1            # Number of CPU cores per task
+
+```
+#### Multi-core single-node job
+```bash
+#!/bin/bash
+#SBATCH --job-name=multi_core_test
+#SBATCH --output=multi_core.out
+#SBATCH --error=multi_core.err
+#SBATCH --time=02:00:00
+#SBATCH --partition=gpu              # GPU partition!
+#SBATCH --ntasks=4                   # 4 tasks (processes)
+#SBATCH --cpus-per-task=2            # Each task uses 2 CPU cores
+#SBATCH --mem=8G                     # Memory per node
+
+```
+#### Multi-node MPI job
+```bash
+#!/bin/bash
+#SBATCH --job-name=mpi_simulation
+#SBATCH --output=mpi_sim.out
+#SBATCH --error=mpi_sim.err
+#SBATCH --time=04:00:00
+#SBATCH --partition=cpu
+#SBATCH --nodes=2                     # Number of nodes
+#SBATCH --ntasks-per-node=8           # Tasks per node
+#SBATCH --cpus-per-task=1             # CPU cores per task
+#SBATCH --mem=32G                     # Memory per node
+```
+
+> But how many cores/RAM do we have?
+
+Dont let us catch you not reading on [Resources in Slurm](Specifying-resources-in-Slurm.mdx)
+
+## Commands
+
+| Command | Description |
+| -- | :-- |
+| `srun` | Initiate an interactive Slurm session |
+| `sbatch` | Submit a job to Slurm |
+| `squeue` | Reports job status |
+| `scancel` | Terminate queued/running jobs |
+| `sinfo` | Reports system status |
+| `sacct` | Provides info about running/completed jobs |
+
+Example usage:
+
+```bash
+scontrol show node
+```
+See available compute resources on the cluster
+
+```bash
+scontrol show job <job_id>
+```
+See detailed information about a running job
+
+```bash
+sacct -j <job_id>
+```
+See accounting information about the specified job
+
+```bash
+sinfo -o "%20N %10c %10m %25f %10G"
+```
+- -o specifies output format
+- N: node name
+- c: number of cores
+- m: memory
+- f: features, typically the architecture or associated GPU type
+- G: GRES (**G**eneric **RES**ources)
+
+```bash
+squeue --me
+```
+View the status of your own jobs

@@ -1,0 +1,60 @@
+---
+title: Specifying resources in Slurm
+sidebar_position: 3
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<style>{`
+  .hpc-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .hpc-table th {
+    background-color: #fdbd88 !important;
+    color: black !important;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  .hpc-table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* This gives your other cells room to breathe */
+    text-align: center;
+    vertical-align: middle;
+  }
+  /* The magic "Breathable" Fill */
+  .type-fill {
+    display: block;
+    /* Negative margin must match the td padding to fill the cell */
+    margin: -10px; 
+    padding: 10px;
+    font-weight: bold;
+    color: black;
+  }
+  .bg-cpu { background-color: #b3def0; }
+  .bg-gpu { background-color: #aff8a2; }
+`}</style>
+
+Check the resources that we have here; below are the detailed specifications for all available compute nodes. This reference is crucial for specifying hardware requirements (CPUs, RAM, and GPUs/MIGs) when using the `sbatch` command to ensure optimal job scheduling and performance.
+
+<div className="hpc-table">
+
+| Node | Type | CPU | System RAM | GPU Resources |
+| :--- | :--- | :--- | :--- | :--- |
+| `mum-hpc2-comp1` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb | N/A |
+| `mum-hpc2-comp2` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb | N/A |
+| `mum-hpc2-comp3` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb | N/A |
+| `mum-hpc2-comp4` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb | N/A |
+| `mum-hpc2-comp5` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb | N/A |
+| `mum-hpc2-comp6` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb | N/A |
+| `mum-hpc2-gpu1` | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb | 4x `3g.39gb`, 2x `7g.79gb` |
+| `mum-hpc2-gpu2` | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb | 4x `3g.39gb`, 2x `7g.79gb` |
+| `mum-hpc2-gpu3` | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb | 4x `3g.39gb`, 2x `7g.79gb` |
+| `mum-hpc2-gpu4` | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb | 4x `3g.39gb`, 2x `7g.79gb` |
+| `mum-hpc2-gpu5` | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb | 4x Full `A100` (80GB) |
+| `mum-hpc2-gpu6` | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb | 4x Full `A100` (80GB) |
+
+</div>
+
+
+For GPU users, check out [GPUs on MONTAGE](GPUs-on-Montage.mdx)

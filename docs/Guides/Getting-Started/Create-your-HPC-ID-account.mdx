@@ -3,9 +3,35 @@ title: Create your HPC ID account
 sidebar_position: 2
 ---
 
-If you don't have an account, request for an ACP account. This account is not the same as the network account or your email account. Follow these steps:
+import { ILabURL } from '@site/src/components/Links';
 
-1. Go to this [iLab link](https://mum.ilab.agilent.com/service_center/4628/?tab=services).
+Sorry, but this may be a bit confusing.
+
+If you don't have an account, request for an **HPC ID account**. But, the registration goes through a platform called iLab, and using iLab requires registration of an **iLab account**.
+
+**These accounts are not the same as the network account or your email account.** Follow these steps:
+
+## If you dont have an iLab account ...
+
+1. Navigate to the URL [https://mum.ilab.agilent.com](https://mum.ilab.agilent.com).
+1. Click "Register" in the top right corner.
+1. Once on the iLab login page, select "Monash University Malaysia user".
+1. You will be prompted to provide your Monash Credentials and password. Fill them in.
+1. You should receive an Okta verification on your phone. Fill it in.
+1. If this is your **first time** logging in, once you authenticate, you will be directed to the registration page. Fill it in and click "Register".
+
+    <img src={require('@site/static/img/Guides/Getting-Started/Create-your-HPC-ID-account_iLab.png').default}
+        alt="Create-your-HPC-ID-account_iLab"
+        style={{ width: '60%', objectFit: 'cover', marginBottom: '1.5rem' }}
+    />
+    :::info Select the appropriate PI/Group from the first dropdown.
+    - If you are students, please select your PI group (PI = Principal Investigator/Research PI/Supervisor).
+    - If you are the PI/Supervisor, please select "New PIP (MUM) Lab" from the dropdown.
+    :::
+
+## Good, now that you have an iLab account ...
+
+1. Go to this <ILabURL>iLab link</ILabURL>.
 1. Sign in using Monash University Malaysia credentials.
     <img src={require('@site/static/img/Guides/Getting-Started/Create-your-HPC-ID-account_1.png').default}
         alt="Create-your-HPC-ID-account_1"
@@ -30,19 +56,20 @@ If you don't have an account, request for an ACP account. This account is not th
 1. You will be directed to this dashboard.
     <img src={require('@site/static/img/Guides/Getting-Started/Create-your-HPC-ID-account_5.png').default}
         alt="Create-your-HPC-ID-account_5"
-        style={{ width: '100%', objectFit: 'cover', marginBottom: '1.5rem' }}
+        style={{ width: '80%', objectFit: 'cover', marginBottom: '1.5rem' }}
     />
+1. So that is all you have to do. Just wait for more updates from us.
 
-:::danger Do not share your ACP account!
+:::danger Do not share your HPC ID account!
 Just create a new account, dont share your accounts. DO IT AT YOUR OWN RISK!
 1. What if another person deleted your files?
 1. What if the other person copy your files, and write on your work?
 :::
 
-:::info Where can I use the ACP?
+:::info Where can I use MONTAGE?
 Anywhere as long as you are in Monash Malaysia internet network! But, if you have to work from home, you can... with a bit of know-how:
 
 1. Get on to Monash Malaysia GlobalProtect VPN
-    <!-- TODO: Add link to connect to ACP -->
-1. Try access the ACP! [Read here](../Connecting-to-ACP/Connecting-to-ACP-via-ssh.mdx) to know the different ways to connect to the ACP.
+    1. VPN Portal Address: **vpn.monash.edu.my**, not vpn.gp.monash.edu (this one is Monash Australian VPN)
+1. Try access MONTAGE! [Read here](../Connecting-to-Montage/Connecting-to-Montage-via-ssh.mdx) to know the different ways to connect to the ACP.
 :::

@@ -1,0 +1,87 @@
+---
+title: GPUs on MONTAGE
+sidebar_position: 5
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<style>{`
+  .gpu-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .gpu-table th {
+    background-color: #fdbd88 !important;
+    color: black !important;
+    text-align: center;
+  }
+  .gpu-table td:first-child {
+    background-color: #aff8a2;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .gpu-table td {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+`}</style>
+
+
+GPUs are split into Multi-Instance GPUs (MIGs) to enable more users to access GPU resources; of course, the performance is also split too. However, the A100 GPUs in nodes mum-hpc2-gpu[5-6] do not have MIG enabled, reserved for users with urgent needs. These are only accessible under the Slurm `highprio` partition.
+
+
+Our cluster provides a mix of **Shared (MIG)** and **Dedicated (Full)** GPU resources.
+
+### 1. Mixed-Use Nodes: `mum-hpc2-gpu[1-4]`
+
+These nodes are configured to support both small interactive tasks and medium-sized batch jobs. Each node contains 4 physical A100s, but they are split into **6 specific logical slices**:
+
+<div className="gpu-table">
+| Slice Name | GRES Type | Available VRAM | Quantity per Node | Total VRAM | Slurm example |
+| --- | --- | --- | --- | --- | --- |
+| **Small Slice** | `3g.39gb` | 40 GB | **4** | 160 GB | `--gres=3g.39gb:1` |
+| **Full Slice** | `7g.79gb`| 80 GB | **2** | 160 GB | `--gres=7g.79gb:1` |
+| **Node Total** | **—** | **—** | **6 Slices** | **320 GB** |  |
+</div>
+
+> **Note:** On these nodes, you request a **slice**, not a physical GPU number.
+
+---
+
+### 2. Full-Power Nodes: `mum-hpc2-gpu[5-6]`
+
+These nodes are strictly for high-performance workloads requiring maximum memory and NVLink interconnectivity. You will have to request for `highprio` 
+
+<div className="gpu-table">
+| Resource Type | GRES Type | Available VRAM | Quantity per Node | Total VRAM | Slurm example |
+| --- | --- | --- | --- | --- | --- |
+| **Full (No MIG)** | `a100`  | 80 GB | **4** | **320 GB** | `--gres=a100:1` |
+</div>
+
+## How to use GPU in my jobs?
+
+Accessing GPUs may be slightly tricky. Of course, the partition you need to access would be the `gpu` partition. If you have a slurm script file, just add this SLURM config line at the top of your script.
+
+
+Things to specify in your script:
+- `--partition=[PARTITION]`,
+    - [PARTITION] would either `gpu` or `highprio`
+- `--gres=[GRES]:[NO]`,
+    - [GRES] should be the GRES type.
+    - [NO] refers to number of MIGs/physical GPUs required.
+
+For example:
+```bash
+#!/usr/bin/env bash
+
+#SBATCH --partition=gpu
+#SBATCH --gres=3g.39gb:1
+
+[... the rest of your code ...]
+
+```
+
+

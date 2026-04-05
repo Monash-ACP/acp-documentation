@@ -1,0 +1,65 @@
+---
+title: Key directories on MONTAGE
+sidebar_position: 1
+---
+
+<style>{`
+  .shared-resource-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .shared-resource-table th {
+    background-color: #8a2be2 !important;
+    color: white !important;
+    text-align: center;
+  }
+  .shared-resource-table td:first-child {
+    background-color: #bf8ad6;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .shared-resource-table td {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+`}</style>
+
+
+When you are in the MONTAGE, you will be in your home directory (absolute path: `/ibm/gpfs/home/[user]` ). By default, users are allocated 500 Gb of storage space.
+
+Your work will mostly revolve anything within your home directory. Hopefully you are not going to work with anything outside these folders; these would be within the admin jurisdiction, or somebody else's files and folders!
+
+If you installed softwares via **anaconda** or **pip**, or download Docker/Singularity container images, they would be stored in your home directory.
+
+:::info
+If you worked on the Massive M3 HPC, the project structure is very different. You just need to think of your own directory. No scratch directories, no project directories. Simple.
+:::
+
+<blockquote>But Marcus, I need more storage space...</blockquote> 
+
+Now, say if the resource that you are using can be shared, maybe your labmates are using the same resources, so it would be ideal if those files can be in a folder with shared-access. If your workflow requires a 50 Gb database, we dont need every single user to be having multiple copies of that 50 Gb dataset in each user folder, that takes too much space! So, we have another directory that is meant for shared resources (absolute path: `/ibm/gpfs/[department-abbreviation]` ).
+
+
+<div className="shared-resource-table">
+
+| Abbreviation | Description | 
+| --- | :--- |
+| soass | School of Arts and Social Sciences |
+| sob | School of Business |
+| soe | School of Engineering |
+| soit | School of Information Technology |
+| jcsmhs | Jeffrey Cheah School of Medicine and Health Sciences |
+| sop | School of Pharmacy |
+| sos | School of Science |
+| admin | HPC admins and ITS staffs |
+| proj | Project |
+
+</div>
+
+
+<!-- TODO: Check the directory paths -->
+<!-- TODO: List active teams/users that manage the shared directories -->
+These directories, we expect research teams from individual schools to manage them. For example, for School of Science, the shared directory would be `/ibm/gpfs/sos`.
