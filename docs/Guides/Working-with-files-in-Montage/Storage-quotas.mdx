@@ -3,7 +3,89 @@ title: Storage quotas
 sidebar_position: 2
 ---
 
-By default we will give 500 Gb. That is usually enough for a project.
+By default, we provide **500 GB** of storage for each user. This is typically sufficient for most research projects. If you find yourself nearing this limit, please review our [Run out of storage quota?](./Run-out-of-your-storage-quota.mdx) guide.
 
-- Are you using **Standardized Reference Datasets** or common databases for your field? Avoid redundancy and enable collaborative research by heading to [Data collections on MONTAGE](../Data-collections-on-Montage) for more info.
+## 📁 Standardized Reference Datasets
 
+To avoid data redundancy and promote collaborative research, we provide shared storage for common databases and field-specific reference datasets.
+
+### Group-Based Access
+Access to these shared directories is determined by your **Linux User Group**. For example, to access the School of Engineering data (`/ibm/gpfs/soe`), your user must be part of the `soe` group.
+
+To check which groups you currently belong to, run the following command in your terminal:
+
+```bash
+groups
+```
+
+**Sample Output:**
+```text
+soit
+```
+
+If you believe you should have access to a specific school directory but are not in the group, please contact your school's technical lead or the HPC team.
+
+If you are using datasets that are commonly used in your field, please check the shared directories below. If you have a dataset you'd like to share with others, [let us know](https://monash-acp.github.io/acp-documentation/Contact-Us)! We can make it a shared resource for you.
+
+Once shared, datasets are typically available under `/ibm/gpfs/{abbreviation}`:
+
+<table style={{ width: '100%' }}>
+    <thead>
+        <tr style={{ backgroundColor: '#b967ff', color: 'white' }}>
+            <th style={{ width: '10%' }}>#</th>
+            <th style={{ width: '25%' }}>Abbreviation</th>
+            <th>School / Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><strong>soass</strong></td>
+            <td>School of Arts and Social Sciences</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>sob</strong></td>
+            <td>School of Business</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>soe</strong></td>
+            <td>School of Engineering</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>soit</strong></td>
+            <td>School of Information Technology</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>jcsmhs</strong></td>
+            <td>Jeffrey Cheah School of Medicine and Health Sciences</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><strong>sop</strong></td>
+            <td>School of Pharmacy</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><strong>sos</strong></td>
+            <td>School of Science</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><strong>admin</strong></td>
+            <td>HPC admins and ITS staff</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td><strong>proj</strong></td>
+            <td>Project-specific shared space</td>
+        </tr>
+    </tbody>
+</table>
+
+:::tip Requesting More Space
+If your research requires significantly more than the default 500 GB, please refer to the [Storage quotas FAQ](./Storage-quotas.mdx) or contact the HPC team for a quota evaluation.
+:::
