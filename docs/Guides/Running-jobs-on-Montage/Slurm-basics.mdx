@@ -1,7 +1,9 @@
 ---
-title: Slurm Basics
+title: SLURM Basics
 sidebar_position: 1
 ---
+
+## First things first
 
 Login nodes are meant for lightweight, interactive tasks only like:
 - changing directories
@@ -20,12 +22,12 @@ Login nodes are meant for lightweight, interactive tasks only like:
 :::danger
 Repeated violations will result in revocation of access to MONTAGE and deletion of the user account (including files).
 
-Misuse of shared resources impacts the experience of all users — you are warned.
+Misuse of shared resources impacts the experience of all users — you have been warned.
 :::
 
 ## Okay, we got that out of the way...
 
-Slurm is the job scheduler. Your script that you execute is a job, and slurm manages the job execution when the resources are available. 
+SLURM is the job scheduler. Your script that you execute is a job, and SLURM manages the job execution when the resources are available. 
 
 To use SLURM to execute your jobs, you need to specify a few key parameters in your job script header. These settings tell SLURM what resources you need and how your job should be scheduled. Typical decisions include:
 
@@ -77,14 +79,14 @@ These SLURM directives are typically included at the top of your script as #SBAT
 
 > But how many cores/RAM do we have?
 
-Dont let us catch you not reading on [Resources in Slurm](Specifying-resources-in-Slurm.mdx)
+Dont let us catch you not reading on [Resources in SLURM](Specifying-resources-in-Slurm.mdx)
 
 ## Commands
 
 | Command | Description |
 | -- | :-- |
-| `srun` | Initiate an interactive Slurm session |
-| `sbatch` | Submit a job to Slurm |
+| `srun` | Initiate an interactive SLURM session |
+| `sbatch` | Submit a job to SLURM |
 | `squeue` | Reports job status |
 | `scancel` | Terminate queued/running jobs |
 | `sinfo` | Reports system status |

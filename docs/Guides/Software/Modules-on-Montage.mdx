@@ -42,7 +42,7 @@ There are reasons these softwares are not all loaded by default. Just load what 
 If you go through the `module av` list, you should notice that there are different versions of the same software. You should now notice, that these softwares will not work if they are all loaded. Like, which one you want? Is it `cuda/cudnn/8.4.1` or `cuda/cudnn/8.9.6`.
 :::
 
-Prepare your slurm script for the job submission, then add the module load line:
+Prepare your SLURM script for the job submission, then add the module load line:
 
 ```bash
 
@@ -65,7 +65,7 @@ Say throughout your workflow:
 1. Say in my workflow:
     - There are three steps
     - Each step will require, say three different softwares from the modules list.
-    - Instead of putting in 9 lines of `module load`, just load the three softwares relevant to each individual steps. That means, three separate slurm scripts for the three separate steps.
+    - Instead of putting in 9 lines of `module load`, just load the three softwares relevant to each individual steps. That means, three separate SLURM scripts for the three separate steps.
 
     ```bash title='step1_genomeAssembly.slurm' showLineNumbers
     module load abyss/2.3.5
