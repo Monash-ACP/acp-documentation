@@ -4,143 +4,61 @@
         <title>Monash Advanced Computing Platform Blog</title>
         <link>https://monash-acp.github.io/acp-documentation/blog</link>
         <description>Monash Advanced Computing Platform Blog</description>
-        <lastBuildDate>Fri, 29 Aug 2025 16:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[First Title to launch:]]></title>
-            <link>https://monash-acp.github.io/acp-documentation/blog/blog_plan</link>
-            <guid>https://monash-acp.github.io/acp-documentation/blog/blog_plan</guid>
-            <pubDate>Fri, 29 Aug 2025 16:00:00 GMT</pubDate>
-            <description><![CDATA[- “What Even Is This Thing?”: Your First Day on an HPC]]></description>
-            <content:encoded><![CDATA[<ul>
-<li>“What Even Is This Thing?”: Your First Day on an HPC</li>
-<li>Slurm and Chill: Submitting Your First Job in 5 Minutes</li>
-<li>The HPC Isn’t Scary (But You Might Be Doing It Wrong)</li>
-<li>STOP Running on the Login Node! (and Other First-Time Sins)</li>
-<li>From Copy-Paste to Power User: Your Next 6 Months on the Cluster</li>
-<li>Be smarter with your HPC, dont be a smartass</li>
-</ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-blogs-to-write">Future blogs to write<a href="https://monash-acp.github.io/acp-documentation/blog/blog_plan#future-blogs-to-write" class="hash-link" aria-label="Direct link to Future blogs to write" title="Direct link to Future blogs to write">​</a></h2>
-<p>🌱 Foundation (For New &amp; Clueless Users)</p>
+            <title><![CDATA[Official ACP SLURM Restructuring & 2026 System Updates]]></title>
+            <link>https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm</link>
+            <guid>https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm</guid>
+            <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[The SLURM restructuring for the ACP is officially complete. We have transitioned away from complex partition naming to a simplified model designed for maximum efficiency and fairness. These updates ensure that all researchers have equitable access to our high-performance resources.]]></description>
+            <content:encoded><![CDATA[<p>The SLURM restructuring for the ACP is officially complete. We have transitioned away from complex partition naming to a simplified model designed for maximum efficiency and fairness. These updates ensure that all researchers have equitable access to our high-performance resources.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-simplified-partitions">1. Simplified Partitions<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#1-simplified-partitions" class="hash-link" aria-label="Direct link to 1. Simplified Partitions" title="Direct link to 1. Simplified Partitions" translate="no">​</a></h2>
+<p>We have consolidated all compute nodes into two primary partitions. If your <code>.sbatch</code> scripts still use legacy names, your jobs will not start. Please update your scripts to use:</p>
 <ul>
-<li>Welcome to the Cluster: What is an HPC and why should you care?</li>
-<li>SSH, Shells &amp; Survival: Your first hour on the command line</li>
-<li>Where Am I and What Can I Do?: Understanding the filesystem &amp; modules</li>
-<li>Slurm for Humans: Submitting your first job without losing your mind</li>
-<li>Interactive Jobs vs Batch Jobs: When to use what</li>
-<li>The HPC Etiquette Manual: Being a good citizen on shared infrastructure</li>
+<li class=""><strong><code>cpu</code></strong>: General-purpose CPU computing nodes.</li>
+<li class=""><strong><code>gpu</code></strong>: High-performance GPU-accelerated nodes.</li>
 </ul>
-<p>🛠️ Getting Practical</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-training-and-dashboard-demo">2. Training and Dashboard Demo<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#2-training-and-dashboard-demo" class="hash-link" aria-label="Direct link to 2. Training and Dashboard Demo" title="Direct link to 2. Training and Dashboard Demo" translate="no">​</a></h2>
+<p>To help everyone adapt to these changes, we urge all users to join our upcoming training session. We will be demoing the new <strong>MONTERA All-in-1</strong> dashboard, which will soon feature real-time CPU% and Memory% usage tracking.</p>
+<p><strong>Sign up for Training</strong>: <a href="https://forms.gle/HLreQ2kXnTgFUPAr9" target="_blank" rel="noopener noreferrer" class="">https://forms.gle/HLreQ2kXnTgFUPAr9</a></p>
+<p>Monitoring your job's efficiency is critical. If your code shows 0% CPU utilization, it is a sign of an error or a hang, and the job should be terminated immediately to avoid resource hogging.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-the-priority-game-qos">3. The Priority Game (QoS)<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#3-the-priority-game-qos" class="hash-link" aria-label="Direct link to 3. The Priority Game (QoS)" title="Direct link to 3. The Priority Game (QoS)" translate="no">​</a></h2>
+<p>Your job's priority and duration are now defined by the Quality of Service (QoS) flag:</p>
 <ul>
-<li>I/O and You: Avoiding common data bottlenecks</li>
-<li>Modules, Envs, and Conda Hell: How to manage environments painlessly</li>
-<li>Containers on the Cluster: Using Singularity like a pro</li>
-<li>When Your Job Fails: Reading error logs and debugging effectively</li>
-<li>How to Not Get Kicked Off the Login Node: Best practices for heavy tasks</li>
+<li class=""><strong><code>short</code></strong>: 2-hour limit. Use this for high-priority tests and debugging.</li>
+<li class=""><strong><code>normal</code></strong>: The default setting with a 7-day partition limit.</li>
+<li class=""><strong><code>long</code></strong>: For 28-day marathons. These have lower priority but are protected from preemption.</li>
 </ul>
-<p>🚀 Power User Tips</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-memory--fairness-model">4. Memory &amp; Fairness Model<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#4-memory--fairness-model" class="hash-link" aria-label="Direct link to 4. Memory &amp; Fairness Model" title="Direct link to 4. Memory &amp; Fairness Model" translate="no">​</a></h2>
+<p>Our new fairness model rewards users who request smaller resource footprints. Requesting excessive RAM relative to CPU cores will lower your fairshare priority and increase your wait time.</p>
 <ul>
-<li>Profiling and Performance: Knowing where your code burns time</li>
-<li>Parallel or Bust: When (and how) to go beyond a single core</li>
-<li>Array Jobs for Mass Execution: The cleanest way to run hundreds of jobs</li>
-<li>Storage Hacks: Organizing your project for speed and sanity</li>
-<li>Advanced SLURM Recipes: Constraints, dependencies, and node reservations</li>
+<li class=""><strong>Default Allocation</strong>: 4GB per CPU.</li>
+<li class=""><strong>Maximum Recommended</strong>: 16GB per CPU.</li>
 </ul>
-<p>📚 Meta &amp; Mythbusting</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-cpu-spillover-and-efficiency">5. CPU Spillover and Efficiency<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#5-cpu-spillover-and-efficiency" class="hash-link" aria-label="Direct link to 5. CPU Spillover and Efficiency" title="Direct link to 5. CPU Spillover and Efficiency" translate="no">​</a></h2>
+<p>To ensure the cluster remains efficient, we have implemented a spillover policy for CPU jobs:</p>
 <ul>
-<li>What the HPC Isn't: Common misconceptions debunked<!-- -->
-<ul>
-<li>Some people think the HPC can run things faster</li>
+<li class=""><strong>Jobs &lt;= 1 Day</strong>: can execute on both CPU nodes (<code>mum-hpc2-comp[1-4]</code>) and idle GPU nodes (<code>mum-hpc2-gpu[1-4]</code>).</li>
+<li class=""><strong>Jobs &gt; 1 Day</strong>: remain strictly on CPU nodes to protect GPU resources for researchers who require them.</li>
 </ul>
-</li>
-<li>You Don’t Need to Be a Guru: Learning HPC the lazy way</li>
-<li>Research vs Resources: HPC isn’t magic, it needs efficient code</li>
-<li>Support Tickets that Get Solved Fast: How to write a good one</li>
-</ul>
-<p>🧠 Community &amp; Beyond</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-high-performance-gpu-hardware">6. High-Performance GPU Hardware<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#6-high-performance-gpu-hardware" class="hash-link" aria-label="Direct link to 6. High-Performance GPU Hardware" title="Direct link to 6. High-Performance GPU Hardware" translate="no">​</a></h2>
+<p>The <code>gpu</code> partition has been updated with high-end hardware for public use:</p>
 <ul>
-<li>We Asked Our Power Users…: Tips from real users</li>
-<li>Workshops, Resources, and YouTube Channels: Learn faster</li>
-<li>HPC in the Wild: Case studies of real research powered by your cluster</li>
-<li>What's New on the Cluster: Updates, maintenance plans, and upgrades</li>
-</ul>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Welcome]]></title>
-            <link>https://monash-acp.github.io/acp-documentation/blog/welcome</link>
-            <guid>https://monash-acp.github.io/acp-documentation/blog/welcome</guid>
-            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
-            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
-<p>Here are a few tips you might find useful.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
-<ul>
-<li><code>2019-05-30-welcome.md</code></li>
-<li><code>2019-05-30-welcome/index.md</code></li>
+<li class=""><strong>A100 GPUs</strong>: Available on nodes <code>gpu5</code> and <code>gpu6</code>.</li>
+<li class=""><strong>H100 GPUs</strong>: Available on nodes <code>gpu7</code> and <code>gpu8</code>.</li>
 </ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://monash-acp.github.io/acp-documentation/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
-            <category>Facebook</category>
-            <category>Hello</category>
-            <category>Docusaurus</category>
-        </item>
-        <item>
-            <title><![CDATA[MDX Blog Post]]></title>
-            <link>https://monash-acp.github.io/acp-documentation/blog/mdx-blog-post</link>
-            <guid>https://monash-acp.github.io/acp-documentation/blog/mdx-blog-post</guid>
-            <pubDate>Sun, 01 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
-            <content:encoded><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p></div></div>
-<!-- -->
-<p>For example, use JSX to create an interactive button:</p>
-<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
-<button>Click me!</button>]]></content:encoded>
-            <category>Docusaurus</category>
-        </item>
-        <item>
-            <title><![CDATA[Long Blog Post]]></title>
-            <link>https://monash-acp.github.io/acp-documentation/blog/long-blog-post</link>
-            <guid>https://monash-acp.github.io/acp-documentation/blog/long-blog-post</guid>
-            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[This is the summary of a very long blog post,]]></description>
-            <content:encoded><![CDATA[<p>This is the summary of a very long blog post,</p>
-<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
-            <category>Hello</category>
-            <category>Docusaurus</category>
-        </item>
-        <item>
-            <title><![CDATA[First Blog Post]]></title>
-            <link>https://monash-acp.github.io/acp-documentation/blog/first-blog-post</link>
-            <guid>https://monash-acp.github.io/acp-documentation/blog/first-blog-post</guid>
-            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem ipsum dolor sit amet...]]></description>
-            <content:encoded><![CDATA[<p>Lorem ipsum dolor sit amet...</p>
-<p>...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
-            <category>Hola</category>
-            <category>Docusaurus</category>
+<p>These specific nodes have <strong>no Multi-Instance GPU (MIG)</strong> configured, providing full access to the hardware for parallel GPU training. To request these, use <code>--gpus=a100:1</code> or <code>--gpus=h100:1</code> in your scripts.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-script-checkout">7. Script Checkout<a href="https://monash-acp.github.io/acp-documentation/blog/2026/03/16/slurm#7-script-checkout" class="hash-link" aria-label="Direct link to 7. Script Checkout" title="Direct link to 7. Script Checkout" translate="no">​</a></h2>
+<p>Ensure your Slurm scripts reflect the new rules to avoid queuing delays:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">#SBATCH --partition=cpu           # Options: cpu, gpu </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">#SBATCH --qos=short               # High-priority tests (2hr limit)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">#SBATCH --cpus-per-task=1         # Standard allocation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">#SBATCH --mem=4G                  # Fairshare-friendly memory</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">#SBATCH --time=2:00:00            # Be accurate to start sooner</span><br></span></code></pre></div></div>
+<p>The ACP is currently tuned for maximum throughput. Use the <code>show_cluster</code> command to check real-time availability. If you are unclear about any of these rules, we will be available during the training session to guide you.</p>]]></content:encoded>
+            <category>announcement</category>
+            <category>hpc</category>
+            <category>slurm</category>
+            <category>montera</category>
         </item>
     </channel>
 </rss>

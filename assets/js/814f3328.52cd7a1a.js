@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkacp_documentation=globalThis.webpackChunkacp_documentation||[]).push([[7472],{5513(t){t.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Official ACP SLURM Restructuring & 2026 System Updates","permalink":"/acp-documentation/blog/2026/03/16/slurm","unlisted":false,"date":"2026-03-16T00:00:00.000Z"}]}')}}]);

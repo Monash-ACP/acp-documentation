@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkacp_documentation=globalThis.webpackChunkacp_documentation||[]).push([[622],{3315(a){a.exports=JSON.parse('{"authors":[{"name":"Montage Team","title":"High Performance Computing Team","url":"https://github.com/monash-acp","imageURL":"https://github.com/monash-acp.png","key":"montage-team","page":null,"count":0}]}')}}]);
