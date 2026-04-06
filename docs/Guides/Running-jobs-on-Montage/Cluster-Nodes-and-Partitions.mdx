@@ -46,12 +46,10 @@ Below are the hardware specifications for all 14 compute nodes. Use this referen
 | `mum-hpc2-comp2` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
 | `mum-hpc2-comp3` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
 | `mum-hpc2-comp4` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
-| `mum-hpc2-comp5` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
-| `mum-hpc2-comp6` | <span className="type-fill bg-cpu">CPU</span> | 2x 32 cores, 64 threads | 256 Gb     | N/A                        |
 | `mum-hpc2-gpu1`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
-| `mum-hpc2-gpu2`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
-| `mum-hpc2-gpu3`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
-| `mum-hpc2-gpu4`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `1g.10gb`, `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu2`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu3`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `3g.40gb`, `7g.80gb` |
+| `mum-hpc2-gpu4`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | MIG: `3g.40gb`, `7g.80gb` |
 | `mum-hpc2-gpu5`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `A100` (80GB) |
 | `mum-hpc2-gpu6`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `A100` (80GB) |
 | `mum-hpc2-gpu7`  | <span className="type-fill bg-gpu">GPU</span> | 2x 32 cores, 64 threads | 512 Gb     | 4x Dedicated `H100` (80GB) |
@@ -67,10 +65,10 @@ Partitions group nodes together, while **QoS** (Quality of Service) flags define
 
 <div className="hpc-table">
 
-| Partition Name          | Default QoS | Nodes      | Description                        |
-| :---------------------- | :---------- | :--------- | :--------------------------------- |
-| **`cpu`** (Default)      | `normal`    | Comp [1-6] | General-purpose CPU computing nodes |
-| **`gpu`**               | `normal`    | GPU [1-8]  | GPU-accelerated computing nodes    |
+| Partition Name          | Default QoS | Nodes     | Description                         |
+| :---------------------- | :---------- | :-------- | :---------------------------------- |
+| **`cpu`** (Default)     | `normal`    | comp[1-6] | General-purpose CPU computing nodes |
+| **`gpu`**               | `normal`    | gpu[1-8]  | GPU-accelerated computing nodes     |
 
 </div>
 
